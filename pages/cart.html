@@ -1,0 +1,21 @@
+<h1>Cart</h1>
+
+<table></table>
+
+<script>
+    // Initialize store.json
+    var store = []
+    $.ajax({
+        url: 'js/store.json',
+        dataType: 'json',
+        async: false,
+        success: function(storeJSON) {
+            store = storeJSON
+        }
+    })
+
+    cart = JSON.parse(localStorage.getItem('cart'))
+
+    // for (i in cart)
+    //
+</script>

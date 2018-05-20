@@ -1,0 +1,89 @@
+<div class="shop"></div>
+
+<!-- <table></table>
+
+<h1 id="cart">
+    <a href="#cart">Cart (<span>0</span>)</a>
+</h1> -->
+
+<script>
+    // Initialize store.json
+    var store = []
+    $.ajax({
+        url: 'js/store.json',
+        dataType: 'json',
+        async: false,
+        success: function(storeJSON) {
+            store = storeJSON
+        }
+    })
+
+    for (i in store)
+        $('.shop').append(`
+            <div class="product" p-desc="${store[i].description}" p-mat="${store[i].material}">
+                <span class="p-img" p-img="${store[i].image}">
+                    <p class="carousel"></p>
+                    <span class="blurToDark"></span>
+                    <button class="buyNow">Buy Now!</button>
+                </span><br>
+                <p class="p-name">${store[i].name}</p>
+                <p class="p-price">$ ${store[i].price}</p>
+                <button class="addToCart">Add To Cart</button>
+            </div>
+        `)
+
+    // Carousel
+    $('.product .p-img').each(function() {
+        p_img = $(this).attr('p-img').split(',')
+        $(this).css({
+            'background-image': `url('img/store/${p_img[0]}')`
+        })
+        for (i in p_img)
+            $('.carousel', this).append('<i></i>')
+        $('.carousel i', this).each(function() {
+            $(this).mouseenter(() => {
+                $('.carousel i').removeClass('active')
+                $(this).addClass('active')
+                $this = $(this).parent().parent()
+                $this.css({
+                    'background-image':
+                        `url('img/store/${$this.attr('p-img').split(',')[$(this).index()]}')`
+                })
+            })
+        })
+    })
+
+    $('.shop').append(`
+        <div class="product-info">
+            <p class="p-desc"></p>
+            <p class="p-mat"></p>
+        </div>
+        <span class="close-btn">×</span>
+    `)
+
+    // Open Product Info
+    $('.product .addToCart, .product .carousel').hide()
+    $('.buyNow, .blurToDark').each(function() {
+        $(this).click(() => {
+            $('.product').addClass('hidden')
+            $('.product .addToCart, .product .carousel').show()
+            $(this).parent().parent().removeClass('hidden')
+            $('.product-info').addClass('shown')
+            $('.product-info .p-desc').html($(this).parent().parent().attr('p-desc'))
+            $('.product-info .p-mat').html($(this).parent().parent().attr('p-mat'))
+            $('.buyNow, .blurToDark').hide()
+            $('.shop .close-btn').fadeIn()
+        })
+    })
+    // Close Product Info
+    $('.shop .close-btn').click(() => {
+        $('.product').removeClass('hidden')
+        $('.product .addToCart, .product .carousel').hide()
+        $('.product-info').removeClass('shown')
+        $('.buyNow, .blurToDark').show()
+        $('.shop .close-btn').fadeOut()
+    })
+    $(document).keydown(function(e) {
+		if (e.which == 27) $('.shop .close-btn').click();	// esc
+	});
+</script>

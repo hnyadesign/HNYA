@@ -1,0 +1,40 @@
+<div class="accordion-orig">
+    <img src="img/home/home-3.jpg">
+    <img src="img/home/home-2.jpg">
+    <img src="img/home/home-1.jpg">
+    <img src="img/home/home-4.jpg">
+    <img src="img/home/home-5.jpg">
+</div>
+<div class="accordion"></div>
+
+<script>
+    // Accordion
+    var accordImg = []
+    $('.accordion-orig img').each(function() {
+        accordImg.push($(this).attr('src'))
+    })
+    for (i in accordImg)
+        $('.accordion').append(`<span src="${accordImg[i]}"></span>`)
+        $('.accordion span').each(function() {
+            $(this).css({
+                'background-image': `url('${$(this).attr('src')}')`
+            })
+        })
+        $('.accordion span').eq(2).addClass('opened')
+    $('.accordion span').click(function() {
+        $('.accordion span').removeClass('opened')
+        $(this).addClass('opened')
+    })
+    $(document).keydown(function(e) {
+        if (e.which == 37 || e.which == 38) $('.accordion span.opened').prev().click()	// ←
+        if (e.which == 39 || e.which == 40) $('.accordion span.opened').next().click()	// →
+    })
+
+    // Swipe Gesture
+    $('.accordion').on('touchend', () => {
+        if (window.pageYOffset > 30)
+            $('.accordion span.opened').next().click()
+        if (window.pageYOffset < 0)
+            $('.accordion span.opened').prev().click()
+    })
+</script>

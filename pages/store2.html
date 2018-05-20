@@ -1,0 +1,76 @@
+<div class="product-list"></div>
+
+<div class="product-info">
+    <div class="p-i-right">
+        <p id="title"></p>
+        <p id="price"></p>
+        <hr>
+        <p id="description"></p>
+        <p id="addToCart">Add to Cart</p>
+    </div>
+    <div class="p-i-left">
+        <div id="image"><p></p></div>
+    </div>
+</div>
+
+<script>
+
+    // Initialize store.json
+    var store = []
+    $.ajax({
+        url: 'js/store.json',
+        dataType: 'json',
+        async: false,
+        success: function(storeJSON) {
+            store = storeJSON
+        }
+    })
+    for (i in store)
+        $('.product-list').append(`
+            <p
+                prod-title="${store[i].title}"
+                prod-price="${store[i].price}"
+                prod-image="${store[i].image}"
+                prod-description="${store[i].description}"
+            >
+                <span class="border-1"></span>
+                <span class="border-2"></span>
+                <span class="price">${store[i].price}</span>
+            </p>
+        `)
+    $('.product-list p').each(function() {
+        $(this).css({
+            'background-image': `url('img/store/${$(this).attr('prod-image').split(',')[0]}')`
+        })
+    })
+
+    // Load Product Info
+    $('.product-list p').click(function() {
+        $('.product-list p').removeClass('active')
+        $(this).addClass('active')
+
+        $('.p-i-right #title').html($(this).attr('prod-title'))
+        $('.p-i-right #description').html($(this).attr('prod-description'))
+        $('.p-i-right #price').html($(this).attr('prod-price'))
+
+        p_i_image = $(this).attr('prod-image').split(',')
+            $('.p-i-left #image p').html('')
+            for (i in p_i_image)
+                $('.p-i-left #image p').append('<i></i>')
+            $('.p-i-left #image').css({
+                'background-image': `url('img/store/${p_i_image[0]}')`
+            })
+
+        $('.p-i-left #image p i').each(function() {
+            $(this).mouseenter(() => {
+                $('.p-i-left #image p i').removeClass('active')
+                $(this).addClass('active')
+                $('.p-i-left #image').css({
+                    'background-image': `url('img/store/${p_i_image[$(this).index()]}')`
+                })
+            })
+        })
+        $('.p-i-left #image p i').eq(0).mouseenter()
+    })
+    $('.product-list p').eq(0).click()
+</script>
