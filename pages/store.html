@@ -1,10 +1,6 @@
 <div class="shop"></div>
 
-<!-- <table></table>
-
-<h1 id="cart">
-    <a href="#cart">Cart (<span>0</span>)</a>
-</h1> -->
+<!-- Powered by PayPal -->
 
 <script>
     // Initialize store.json
@@ -17,73 +13,103 @@
             store = storeJSON
         }
     })
-
-    for (i in store)
+    for (i in store) {
         $('.shop').append(`
-            <div class="product" p-desc="${store[i].description}" p-mat="${store[i].material}">
-                <span class="p-img" p-img="${store[i].image}">
-                    <p class="carousel"></p>
-                    <span class="blurToDark"></span>
-                    <button class="buyNow">Buy Now!</button>
-                </span><br>
-                <p class="p-name">${store[i].name}</p>
-                <p class="p-price">$ ${store[i].price}</p>
-                <button class="addToCart">Add To Cart</button>
+            <div class="prod-group" p-grp="${i}">
+                <div class="p-g-name">${i}</div>
             </div>
         `)
-
-    // Carousel
-    $('.product .p-img').each(function() {
-        p_img = $(this).attr('p-img').split(',')
-        $(this).css({
+        for (j in store[i])
+            $(`.prod-group[p-grp="${i}"]`).append(`
+                <div
+                    class="product"
+                    p-id="${store[i][j].id}"
+                    p-paypal="${store[i][j].paypal}"
+                    p-desc="${store[i][j].description}"
+                    p-mat="${store[i][j].material}"
+                >
+                    <span class="p-img" p-img=${store[i][j].image}>
+                        <span class="p-img-hover">
+                            <p class="buyNow">Buy Now!</p>
+                        </span>
+                        <span class="p-img-carousel"></span>
+                    </span>
+                    <p class="p-name">${store[i][j].name}</p>
+                    <p class="p-price">$ ${store[i][j].price}</p>
+                </div>
+            `)
+        $(`.prod-group[p-grp="${i}"]`).append('<div class="prod-info"></div>')
+    }
+    // Product Details
+    $('.product').each(function() {
+        // Product Image
+        p_img = $('.p-img', this).attr('p-img').split(',')
+        $('.p-img', this).css({
             'background-image': `url('img/store/${p_img[0]}')`
         })
+        $('.p-img-carousel', this).hide().html('')
         for (i in p_img)
-            $('.carousel', this).append('<i></i>')
-        $('.carousel i', this).each(function() {
+            $('.p-img-carousel', this).append(`<i></i>`)
+        $('.p-img-carousel i', this).each(function() {
             $(this).mouseenter(() => {
-                $('.carousel i').removeClass('active')
+                p_img_hover = $(this).parent().parent().attr('p-img').split(',')
+                $('.p-img-carousel i').removeClass('active')
                 $(this).addClass('active')
-                $this = $(this).parent().parent()
-                $this.css({
-                    'background-image':
-                        `url('img/store/${$this.attr('p-img').split(',')[$(this).index()]}')`
+                $(this).parent().parent().css({
+                    'background-image': `url('img/store/${p_img_hover[$(this).index()]}')`
                 })
+            })
+        })
+        // Open Product Info
+        $(this).click(() => {
+            $(this).parent().find('.product').hide()
+            $(this).show()
+            $('.p-img-carousel', this).show()
+            $('.p-img-hover', this).hide()
+            $(this).parent().find('.prod-info')
+                .html(`
+                    <i class="close-p-i"><i>×</i></i>
+                    <p class="p-desc">${$(this).attr('p-desc')}</p>
+                    <p class="p-mat">${$(this).attr('p-mat')}</p>
+                    <select
+                        class="options"
+                        p-paypal="${$(this).attr('p-paypal')}"
+                    ></select>
+                    <a class="addToCart">Add To Cart</a>
+                `)
+                .show()
+            // Product Options
+            $(this).parent().find('.options').each(function() {
+                options = $(this).attr('p-paypal').split(',')
+                for (i in options) {
+                    opt = options[i].split('|')
+                    $(this).append(`
+                        <option value="${opt[1]}">${opt[0]}</option>
+                    `)
+                }
+                $(this).parent().find('.addToCart').attr({
+                    'href': $(this).parent().find('.options').val(),
+                    'target': '_blank'
+                })
+                $(this).change(() => {
+                    $(this).parent().find('.addToCart').attr({
+                        'href': $(this).parent().find('.options').val(),
+                        'target': '_blank'
+                    })
+                })
+            })
+            // Close Product Info
+            $this = $(this)
+            $(this).parent().find('.close-p-i').click(() => {
+                $(this).parent().find('.prod-info').hide()
+                $(this).parent().find('.p-img-carousel').hide()
+                $(this).parent().find('.product, .p-img-hover').show()
+            })
+            $(document).keydown(function(e) {
+                if (e.which == 27) $('.close-p-i').click()	// esc
             })
         })
     })
 
-    $('.shop').append(`
-        <div class="product-info">
-            <p class="p-desc"></p>
-            <p class="p-mat"></p>
-        </div>
-        <span class="close-btn">×</span>
-    `)
-
-    // Open Product Info
-    $('.product .addToCart, .product .carousel').hide()
-    $('.buyNow, .blurToDark').each(function() {
-        $(this).click(() => {
-            $('.product').addClass('hidden')
-            $('.product .addToCart, .product .carousel').show()
-            $(this).parent().parent().removeClass('hidden')
-            $('.product-info').addClass('shown')
-            $('.product-info .p-desc').html($(this).parent().parent().attr('p-desc'))
-            $('.product-info .p-mat').html($(this).parent().parent().attr('p-mat'))
-            $('.buyNow, .blurToDark').hide()
-            $('.shop .close-btn').fadeIn()
-        })
-    })
-    // Close Product Info
-    $('.shop .close-btn').click(() => {
-        $('.product').removeClass('hidden')
-        $('.product .addToCart, .product .carousel').hide()
-        $('.product-info').removeClass('shown')
-        $('.buyNow, .blurToDark').show()
-        $('.shop .close-btn').fadeOut()
-    })
-    $(document).keydown(function(e) {
-		if (e.which == 27) $('.shop .close-btn').click();	// esc
-	});
+    appendFooter()
 </script>

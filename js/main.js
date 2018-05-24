@@ -1,21 +1,11 @@
-// Load Pages
-hnyapw = 'poop'
-
-var contactPageLoadAttempt
 function loadPages() {
-    hash = location.hash.substr(1).split('?')[0]
+    hash = location.hash.substr(1)
     if (hash == '') hash = 'home'
-        if (hash != 'contact')
-            contactPageLoadAttempt = 0
-        else
-            contactPageLoadAttempt++
 
     $(document)
         .ajaxStart(function() {
-            if (contactPageLoadAttempt < 2) {
-                $('main').hide()
-                $('aside.loading').fadeIn()
-            }
+            $('main').hide()
+            $('aside.loading').fadeIn()
         })
         .ajaxStop(function() {
             $('main').show()
@@ -24,51 +14,58 @@ function loadPages() {
             }, 1000 * .5)
         })
 
-    pageInfo = {
-        'home': ['whiteBG', ''],
-        'collection': ['whiteBG', 'overflow'],
-        'kamon': ['whiteBG', 'overflow'],
-        'hnya': ['whiteBG', 'overflow'],
-        'store': ['whiteBG', 'overflow'],
-        'cart': ['whiteBG', ''],
-        'about': ['whiteBG', ''],
-        'contact': ['whiteBG', 'overflow']
-    }
-
-    $('body').attr('class', pageInfo[hash][0])
     $('main')
-        .attr('class', `${hash} ${pageInfo[hash][1]}`)
+        .attr('class', hash)
+        .html('')
         .load(`pages/${hash}.html`)
-
-    $('#links-mobile a').removeClass('active')
-    $(`#links-mobile a.${hash}`).addClass('active')
 }
 loadPages()
-window.addEventListener('hashchange', loadPages)
-
-// Scroll to Top on Page Link Click
-$('nav a').click(() => {
-    $('main').animate({scrollTop: 0})
+window.addEventListener('hashchange', () => {
+    loadPages()
 })
 
-// Links Mobile
-$('#links-mobile').html(`
-    ${$('#links-desktop').html()}
-    <footer class="mobile">${$('footer.desktop').html()}</footer>
-`)
-$('#links-mobile-trigger').click(() => {
-    $('body, #links-mobile, #links-mobile-trigger').toggleClass('opened')
+// Nav Mobile
+$('nav#mobile').html($('nav#desktop').html())
+$('#nav-trigger').click(() => {
+    $('body').toggleClass('nav-opened')
 })
 
-// Social Links
-$('.social a').each(function() {
-    $(this).css({'background-image': `url('img/social/${$(this).attr('social')}.png')`})
-
-    $(this).hover(() => {
-        $(this).css({'background-image': `url('img/social/${$(this).attr('social')}_hover.png')`})
-    }, () => {
-        $(this).css({'background-image': `url('img/social/${$(this).attr('social')}.png')`})
+// Append Footer Info
+function appendFooter() {
+    $('main').append(`
+        <footer id="desktop">
+            <div class="left">
+                <a href="#contact">Contact Us</a>
+                <span class="divider">|</span>
+                <a href="#contact">Subscribe</a>
+                <span class="divider">|</span>
+                <a href="#contact">Shipping & Return Policy</a>
+                <span class="divider">|</span>
+                <a href="#contact">Privacy Policy</a>
+                <span class="divider">|</span>
+                <a href="#contact">Terms & Conditions</a>
+            </div>
+            <div class="right social"></div>
+        </footer>
+    `)
+    $('#nav-mobile').append(`<footer id="mobile"></footer>`)
+    $('footer#mobile').html($('footer#desktop').html())
+    social = [
+        ["tw", "@HNYAunofficial", "https://twitter.com/HNYAunofficial"],
+        ["insta", "@hannya_design", "https://www.instagram.com/hannya_design/"],
+        ["fb", "@", ""],
+        ["tw", "@HNYAofficial", "https://twitter.com/HNYAofficial"]
+    ]
+    for (i in social)
+        $('footer .social')
+            .append(`
+                <a href="${social[i][2]}" target="_blank">
+                    <img s-img="${social[i][0]}" src="img/social/${social[i][0]}.png">
+                </a>
+            `)
+    $('footer .social a img').hover(function() {
+        $(this).attr('src', `img/social/${$(this).attr('s-img')}_hover.png`)
+    }, function() {
+        $(this).attr('src', `img/social/${$(this).attr('s-img')}.png`)
     })
-})
-
-hnyapw = 'hhh'
+}

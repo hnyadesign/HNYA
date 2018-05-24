@@ -1,30 +1,48 @@
-[
-    {
-        "id": "t-01",
-        "name": "T-01",
-        "price": 25,
-        "image": ["p1-0.jpg", "p1-1.jpg", "p1-2.jpg"],
-        "description":
-            "<b>Description</b>: The T-01 is inspired by luxury through simplicity. Rep. the brand in a way only those chosen few will notice. T-01 is for those who know that real luxury and quality speak for itself.",
-        "material":
-            "<b>Material</b>: Made from 100% combed and ring-spun long staple cotton for a devilishly soft feel. Accented with CPSIA certified vinyl for a durable and quality finish."
-    }, {
-        "id": "t-02",
-        "name": "T-02",
-        "price": 25,
-        "image": ["p2-0.jpg", "p2-1.jpg", "p2-2.jpg"],
-        "description":
-            "<b>Description</b>: Aggressive design combined with a strong impression. The T-02 is unapologetic and uncaring. It’s aggressive full back design Hannya mask coupled with bold kanji create a bold statement. For those who know who they are and what they want.",
-        "material":
-            "<b>Material</b>: Made from 100% combed and ring-spun long staple cotton for a devilishly soft feel. Accented with CPSIA certified vinyl for a durable and quality finish."
-    }, {
-        "id": "mon",
-        "name": "MON",
-        "price": 110,
-        "image": ["p3-0.jpg", "p3-1.jpg"],
-        "description":
-            "<b>Description</b>: The Mon (or Kamon) series is all about you. Our “investor series,” each hoodie is a custom made 1 of 1 product that uses your Japanese family crest alongside our brand. Each design is pre-generated with an open dialogue. Here are the steps. <br><br>&nbsp;&nbsp;&nbsp;&nbsp;1. Send us an email with<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Your Family Crest<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*3 Letters of your choice (Can Be Initials)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Color combination (See Chart Below)<br>&nbsp;&nbsp;&nbsp;&nbsp;2.   We’ll send you a digital design<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Give us your confirmation and we’ll send you a Paypal checkout link! <br>&nbsp;&nbsp;&nbsp;&nbsp;4. Receive your jacket in 2 weeks (it is custom made)",
-        "material":
-            "<b>Material</b>: 52% combed and ring-spun long staple cotton combined with 48% poly fleece for an extra soft feel, and finished with a high quality CPSIA certified vinyl application."
-    }
-]
+{
+    "Tees": [
+        {
+            "id": "t-01",
+            "name": "T-01",
+            "price": 25,
+            "paypal": [
+                "White|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HZBCTTFMLB2XS",
+                "Black|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9XAURLBCA67YA",
+                "Red|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Q224WCNMGP9Q4"
+            ],
+            "image": ["p1-0.jpg", "p1-1.jpg", "p1-2.jpg"],
+            "description":
+                "<b>Description</b>: The T-01 is inspired by luxury through simplicity. Rep. the brand in a way only those chosen few will notice. T-01 is for those who know that real luxury and quality speak for itself.",
+            "material":
+                "<b>Material</b>: Made from 100% combed and ring-spun long staple cotton for a devilishly soft feel. Accented with CPSIA certified vinyl for a durable and quality finish."
+        }, {
+            "id": "t-02",
+            "name": "T-02",
+            "price": 25,
+            "paypal": [
+                "White|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DGWV95U378MAL",
+                "Black|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=557ZU3HJNQV98",
+                "Red|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=29FQPBL56JMTS"
+            ],
+            "image": ["p2-0.jpg", "p2-1.jpg", "p2-2.jpg"],
+            "description":
+                "<b>Description</b>: Aggressive design combined with a strong impression. The T-02 is unapologetic and uncaring. It’s aggressive full back design Hannya mask coupled with bold kanji create a bold statement. For those who know who they are and what they want.",
+            "material":
+                "<b>Material</b>: Made from 100% combed and ring-spun long staple cotton for a devilishly soft feel. Accented with CPSIA certified vinyl for a durable and quality finish."
+        }
+    ],
+    "Hoodies": [
+        {}
+    ],
+    "MON": [
+        {
+            "id": "mon",
+            "name": "MON",
+            "price": 110,
+            "image": ["p3-0.jpg", "p3-1.jpg"],
+            "description":
+                "<b>Description</b>: The Mon (or Kamon) series is all about you. Our “investor series,” each hoodie is a custom made 1 of 1 product that uses your Japanese family crest alongside our brand. Each design is pre-generated with an open dialogue. Here are the steps. <br><br>&nbsp;&nbsp;&nbsp;&nbsp;1. Send us an email with<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Your Family Crest<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*3 Letters of your choice (Can Be Initials)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Color combination (See Chart Below)<br>&nbsp;&nbsp;&nbsp;&nbsp;2.   We’ll send you a digital design<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Give us your confirmation and we’ll send you a Paypal checkout link! <br>&nbsp;&nbsp;&nbsp;&nbsp;4. Receive your jacket in 2 weeks (it is custom made)",
+            "material":
+                "<b>Material</b>: 52% combed and ring-spun long staple cotton combined with 48% poly fleece for an extra soft feel, and finished with a high quality CPSIA certified vinyl application."
+        }
+    ]
+}

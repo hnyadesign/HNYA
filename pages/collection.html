@@ -1,43 +1,24 @@
 <div class="dichotomy">
-    <a href="#kamon" class="left">
-        <h1>
-            KAMON<br>
-            <span>COLLECTION</span>
-        </h1>
-        <!-- <p>
-            Full Customized Designs:<br>
-            Wear your Identity, and your History
-            <br>
-            We use your family crest for you design.<br>
-            Making every hoodie one of a kind.
-            <br>
-            Don't have one? Your history starts today.
-        </p> -->
-    </a>
-    <a href="#hnya" class="right">
-        <h1>
-            HNYA<br>
-            <span>COLLECTION</span>
-        </h1>
-        <!-- <p>
-            A beautiful woman twisted into a <em>kijo</em> (demoness)<br>
-            from betrayal or jealousy.<br>
-            It is that same dangerous & artistic beauty<br>
-            we try to infuse into our designs.
-        </p> -->
-    </a>
+    <div c-img="collection-1.jpg" class="hoverElem left">
+        <a href="#hnya"><i>HNYA</i></a>
+    </div>
+    <div c-img="collection-2.jpg" class="hoverElem right">
+        <a href="#kamon"><i>KAMON</i></a>
+    </div>
 </div>
 
-<aside class="banner">
-    <img src="img/kamon-fuji.png">
-</aside>
-
 <script>
-    // Dichotomy
-    $('.dichotomy .left').mouseenter(() => {
-        $('.dichotomy').removeClass('hovered')
+    $('.dichotomy .hoverElem').each(function() {
+        $(this).mouseenter(() => {
+            $('.dichotomy .hoverElem').removeClass('hovered')
+            $(this).addClass('hovered')
+            $this = $(this)
+            $('.dichotomy').css({
+                'background-image': `url('img/collection/${$this.attr('c-img')}')`
+            })
+        })
     })
-    $('.dichotomy .right').mouseenter(() => {
-        $('.dichotomy').addClass('hovered')
-    })
+    $('.dichotomy .left').mouseenter()
+
+    appendFooter()
 </script>

@@ -1,24 +1,34 @@
 <div class="accordion-orig">
+    <img src="img/home/home-1.jpg" a-title="HNYA" a-link="#hnya">
+    <img src="img/home/home-2.jpg" a-title="KAMON" a-link="#kamon">
     <img src="img/home/home-3.jpg">
-    <img src="img/home/home-2.jpg">
-    <img src="img/home/home-1.jpg">
-    <img src="img/home/home-4.jpg">
-    <img src="img/home/home-5.jpg">
+    <img src="img/home/home-4.jpg" a-title="STORE" a-link="#store">
+    <img src="img/home/home-5.jpg" a-title="ABOUT" a-link="#about">
 </div>
-<div class="accordion"></div>
+<div id="content" class="accordion"></div>
 
 <script>
     // Accordion
     var accordImg = []
     $('.accordion-orig img').each(function() {
-        accordImg.push($(this).attr('src'))
+        accordImg.push([$(this).attr('src'), $(this).attr('a-title'), $(this).attr('a-link')])
     })
     for (i in accordImg)
-        $('.accordion').append(`<span src="${accordImg[i]}"></span>`)
+        $('.accordion').append(`<span
+                src="${accordImg[i][0]}"
+                a-title="${accordImg[i][1]}"
+                a-link="${accordImg[i][2]}"
+            ></span>`)
         $('.accordion span').each(function() {
-            $(this).css({
-                'background-image': `url('${$(this).attr('src')}')`
-            })
+            $(this)
+                .css({
+                    'background-image': `url('${$(this).attr('src')}')`
+                })
+                .append(`
+                    <a href="${$(this).attr('a-link')}" class="a-title">
+                        <i>${$(this).attr('a-title')}</i>
+                    </a>
+                `)
         })
         $('.accordion span').eq(2).addClass('opened')
     $('.accordion span').click(function() {
@@ -37,4 +47,6 @@
         if (window.pageYOffset < 0)
             $('.accordion span.opened').prev().click()
     })
+
+    appendFooter()
 </script>
