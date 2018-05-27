@@ -35,7 +35,7 @@
                         <span class="p-img-carousel"></span>
                     </span>
                     <p class="p-name">${store[i][j].name}</p>
-                    <p class="p-price">$ ${store[i][j].price}</p>
+                    <p class="p-price">${store[i][j].price}</p>
                 </div>
             `)
         $(`.prod-group[p-grp="${i}"]`).append('<div class="prod-info"></div>')
@@ -66,18 +66,28 @@
             $(this).show()
             $('.p-img-carousel', this).show()
             $('.p-img-hover', this).hide()
-            $(this).parent().find('.prod-info')
-                .html(`
-                    <i class="close-p-i"><i>×</i></i>
-                    <p class="p-desc">${$(this).attr('p-desc')}</p>
-                    <p class="p-mat">${$(this).attr('p-mat')}</p>
-                    <select
-                        class="options"
-                        p-paypal="${$(this).attr('p-paypal')}"
-                    ></select>
-                    <a class="addToCart">Add To Cart</a>
-                `)
-                .show()
+            if ($(this).attr('p-paypal') != 'undefined')
+                $(this).parent().find('.prod-info')
+                    .html(`
+                        <i class="close-p-i"><i>×</i></i>
+                        <p class="p-desc">${$(this).attr('p-desc')}</p>
+                        <p class="p-mat">${$(this).attr('p-mat')}</p>
+                        <select
+                            class="options"
+                            p-paypal="${$(this).attr('p-paypal')}"
+                        ></select>
+                        <a class="addToCart">Add To Cart</a>
+                    `)
+                    .show()
+            else
+                $(this).parent().find('.prod-info')
+                    .html(`
+                        <i class="close-p-i"><i>×</i></i>
+                        <p class="p-desc">${$(this).attr('p-desc')}</p>
+                        <p class="p-mat">${$(this).attr('p-mat')}</p>
+                        <a href="mailto:" class="addToCart">Email Now!</a>
+                    `)
+                    .show()
             // Product Options
             $(this).parent().find('.options').each(function() {
                 options = $(this).attr('p-paypal').split(',')

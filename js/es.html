@@ -1,0 +1,65 @@
+<table></table>
+
+<style>
+    table {
+        border-collapse: collapse;
+    }
+    thead td {
+        background: #000;
+        color: #fff;
+        font-weight: bold;
+    }
+    tr:nth-child(2n+1) {
+        background: #eee;
+    }
+    td {
+        padding: 4px 8px;
+    }
+</style>
+
+<script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="main.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyCN5wAjDPqLvNBHZ7iUA5FtxNha2MbKnqo",
+        authDomain: "hnya-design.firebaseapp.com",
+        databaseURL: "https://hnya-design.firebaseio.com",
+        projectId: "hnya-design",
+        storageBucket: "hnya-design.appspot.com",
+        messagingSenderId: "574981691123"
+    };
+    firebase.initializeApp(config);
+
+    var pw
+    $(document).keydown(function(e) {
+        if (e.which == 186) {
+            pw = prompt('Enter Password')
+
+            if (pw == hnyapw) {
+                $('table').html(`
+                    <thead>
+                        <td>Name</td>
+                        <td>Email</td>
+                        <td>Date</td>
+                    </thead>
+                `)
+
+                firebase.database().ref().on('value', (es) => {
+                    for (i in es.val())
+                        $('table').append(`
+                            <tr>
+                                <td>${es.val()[i].name}</td>
+                                <td>
+                                    <a href="emailto:${es.val()[i].email}">${es.val()[i].email}</a>
+                                </td>
+                                <td>${es.val()[i].date}</td>
+                            </tr>
+                        `)
+                })
+            } else
+                alert('Incorrect.')
+        }
+    })
+</script>

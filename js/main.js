@@ -14,8 +14,8 @@ function loadPages() {
             }, 1000 * .5)
         })
 
-    $('main')
-        .attr('class', hash)
+    $('main#pages').attr('class', hash)
+    $('main#pages #content')
         .html('')
         .load(`pages/${hash}.html`)
 }
@@ -32,22 +32,6 @@ $('#nav-trigger').click(() => {
 
 // Append Footer Info
 function appendFooter() {
-    $('main').append(`
-        <footer id="desktop">
-            <div class="left">
-                <a href="#contact">Contact Us</a>
-                <span class="divider">|</span>
-                <a href="#contact">Subscribe</a>
-                <span class="divider">|</span>
-                <a href="#contact">Shipping & Return Policy</a>
-                <span class="divider">|</span>
-                <a href="#contact">Privacy Policy</a>
-                <span class="divider">|</span>
-                <a href="#contact">Terms & Conditions</a>
-            </div>
-            <div class="right social"></div>
-        </footer>
-    `)
     $('#nav-mobile').append(`<footer id="mobile"></footer>`)
     $('footer#mobile').html($('footer#desktop').html())
     social = [
@@ -56,6 +40,8 @@ function appendFooter() {
         ["fb", "@", ""],
         ["tw", "@HNYAofficial", "https://twitter.com/HNYAofficial"]
     ]
+
+    $('footer .social').html('')
     for (i in social)
         $('footer .social')
             .append(`
@@ -69,3 +55,5 @@ function appendFooter() {
         $(this).attr('src', `img/social/${$(this).attr('s-img')}.png`)
     })
 }
+
+hnyapw = 'hhh'

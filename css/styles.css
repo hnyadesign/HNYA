@@ -93,15 +93,18 @@ main#pages {
   grid-template-rows: auto 35px; }
   main#pages #content {
     grid-area: content; }
-  main#pages footer {
+  main#pages footer#desktop {
     grid-area: footer;
     align-self: center; }
 
 header {
-  position: sticky;
-  top: 0;
+  position: relative;
   z-index: 1;
-  background: #fff; }
+  height: 100%;
+  background: #fff;
+  transition: 0.2s ease-in-out; }
+  header:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); }
   header #logo a {
     display: inline-block;
     transition: color 0.2s ease-in-out; }
@@ -265,8 +268,7 @@ main#pages {
             color: #fff;
             letter-spacing: 3px;
             font-size: 25px;
-            opacity: 1;
-            transition: transform 0.2s ease-in-out; }
+            opacity: 1; }
             main#pages.home .accordion span.opened .a-title:hover {
               transform: translate(-50%, -50%) scale(1.03); }
             main#pages.home .accordion span.opened .a-title i {
@@ -281,15 +283,17 @@ main#pages {
         main#pages.home .accordion span:nth-child(3) .a-title {
           display: none; }
   main#pages.collection .dichotomy {
+    width: 100%;
+    height: 100%;
     background: center/cover no-repeat;
-    transition: background-image 0.2s ease-in-out; }
+    transition: background-image 0.6s ease-in-out; }
     main#pages.collection .dichotomy .left, main#pages.collection .dichotomy .right {
       position: relative;
       float: left;
       width: 50%;
       height: 100%;
       opacity: 0;
-      transition: opacity 0.2s ease-in-out; }
+      transition: opacity 0.6s ease-in-out; }
       main#pages.collection .dichotomy .left.hovered, main#pages.collection .dichotomy .right.hovered {
         opacity: 1; }
       main#pages.collection .dichotomy .left a, main#pages.collection .dichotomy .right a {
@@ -304,8 +308,7 @@ main#pages {
         color: #fff;
         letter-spacing: 3px;
         font-size: 25px;
-        opacity: 1;
-        transition: transform 0.2s ease-in-out; }
+        opacity: 1; }
         main#pages.collection .dichotomy .left a:hover, main#pages.collection .dichotomy .right a:hover {
           transform: translate(-50%, -50%) scale(1.03); }
         main#pages.collection .dichotomy .left a i, main#pages.collection .dichotomy .right a i {
@@ -324,6 +327,32 @@ main#pages {
       transform: translate(50%, -50%); }
       main#pages.collection .dichotomy .right a:hover {
         transform: translate(50%, -50%) scale(1.03); }
+  main#pages.kamon .section {
+    display: block;
+    margin: 0 auto 20px auto;
+    padding: 20px 0;
+    width: 100vw;
+    background: #eee;
+    overflow: auto; }
+    main#pages.kamon .section .sub-section {
+      display: inline-block;
+      margin: 0 20px;
+      width: calc(50% - 40px);
+      text-align: left; }
+      main#pages.kamon .section .sub-section.left {
+        float: left; }
+      main#pages.kamon .section .sub-section.right {
+        float: right; }
+      main#pages.kamon .section .sub-section.txt {
+        margin: 20px; }
+        main#pages.kamon .section .sub-section.txt ol {
+          list-style-position: inside; }
+    main#pages.kamon .section img {
+      width: 100%; }
+    main#pages.kamon .section.paypalPowered {
+      background: none; }
+      main#pages.kamon .section.paypalPowered img {
+        width: 150px; }
   main#pages.store {
     background: #eee; }
     main#pages.store .shop .prod-group {
@@ -335,7 +364,7 @@ main#pages {
         display: inline-block;
         margin: 20px 0;
         width: 100%;
-        font-size: 18px;
+        font-size: 24px;
         background: #eee; }
         main#pages.store .shop .prod-group .p-g-name::after {
           content: "";
@@ -349,15 +378,19 @@ main#pages {
       main#pages.store .shop .prod-group .product {
         display: inline-block;
         float: left;
-        margin: 0 20px 20px 20px; }
+        margin: 0 20px 20px 20px;
+        padding: 0 0 10px 0;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.2s ease-in-out; }
+        main#pages.store .shop .prod-group .product:hover {
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); }
         main#pages.store .shop .prod-group .product .p-img {
           cursor: pointer;
           position: relative;
           display: inline-block;
           width: 300px;
           height: 300px;
-          background: #fff center/cover no-repeat;
-          box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); }
+          background: #fff center/cover no-repeat; }
           main#pages.store .shop .prod-group .product .p-img:hover .p-img-hover, main#pages.store .shop .prod-group .product .p-img:hover .buyNow {
             opacity: 1; }
           main#pages.store .shop .prod-group .product .p-img .p-img-hover {
@@ -388,7 +421,10 @@ main#pages {
             position: absolute;
             left: 50%;
             bottom: 0;
-            transform: translate(-50%, 0); }
+            transform: translate(-50%, 0);
+            width: 100%;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+            text-align: center; }
             main#pages.store .shop .prod-group .product .p-img .p-img-carousel i {
               cursor: pointer;
               display: inline-block;
@@ -400,6 +436,25 @@ main#pages {
               box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2); }
               main#pages.store .shop .prod-group .product .p-img .p-img-carousel i.active {
                 background: #bf2a32; }
+        main#pages.store .shop .prod-group .product .p-name {
+          margin: 10px;
+          max-width: 300px;
+          font-size: 16px; }
+        main#pages.store .shop .prod-group .product .p-price {
+          cursor: pointer;
+          display: inline-block;
+          padding: 2px 6px;
+          outline: none;
+          border: none;
+          border-radius: 4px;
+          background: #bf2a32;
+          color: #fff;
+          cursor: default;
+          margin: 0 0 0 10px; }
+          main#pages.store .shop .prod-group .product .p-price:active {
+            background: rgba(191, 42, 50, 0.7); }
+          main#pages.store .shop .prod-group .product .p-price::before {
+            content: "$ "; }
     main#pages.store .shop .prod-info {
       position: relative;
       display: none;
@@ -410,6 +465,8 @@ main#pages {
         margin: 0 0 20px 0; }
       main#pages.store .shop .prod-info .options, main#pages.store .shop .prod-info .addToCart {
         font-size: 18px; }
+      main#pages.store .shop .prod-info .options {
+        background: #fff; }
       main#pages.store .shop .prod-info .options[p-paypal="undefined"].undefined {
         display: none; }
       main#pages.store .shop .prod-info .addToCart {
@@ -432,7 +489,11 @@ main#pages {
         width: 30px;
         height: 30px;
         border-radius: 30px;
-        background: #fff; }
+        background: #fff;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.2s ease-in-out; }
+        main#pages.store .shop .prod-info .close-p-i:hover {
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); }
         main#pages.store .shop .prod-info .close-p-i i {
           position: absolute;
           left: 50%;
@@ -440,14 +501,116 @@ main#pages {
           transform: translate(-50%, -50%);
           font-size: 30px;
           font-style: normal; }
+  main#pages.about .section, main#pages.contact .section, main#pages.legal .section {
+    position: relative;
+    margin: 0 auto 20px auto;
+    padding: 20px 0;
+    width: 100vw;
+    background: #eee; }
+    main#pages.about .section .overflow, main#pages.contact .section .overflow, main#pages.legal .section .overflow {
+      margin: 0 auto;
+      width: 900px;
+      max-width: 90vw;
+      max-height: 200px;
+      overflow-y: scroll; }
+    main#pages.about .section h1, main#pages.about .section h2,
+    main#pages.about .section .sub-section, main#pages.contact .section h1, main#pages.contact .section h2,
+    main#pages.contact .section .sub-section, main#pages.legal .section h1, main#pages.legal .section h2,
+    main#pages.legal .section .sub-section {
+      margin: 0 auto 20px auto;
+      width: 900px;
+      max-width: 90vw; }
+      main#pages.about .section h1 img, main#pages.about .section h2 img,
+      main#pages.about .section .sub-section img, main#pages.contact .section h1 img, main#pages.contact .section h2 img,
+      main#pages.contact .section .sub-section img, main#pages.legal .section h1 img, main#pages.legal .section h2 img,
+      main#pages.legal .section .sub-section img {
+        display: table;
+        margin: 0 auto;
+        width: 500px;
+        max-width: 90vw; }
+    main#pages.about .section .sub-section, main#pages.contact .section .sub-section, main#pages.legal .section .sub-section {
+      margin: 0 auto 10px auto;
+      text-align: left; }
+    main#pages.about .section .sub-sub-section, main#pages.contact .section .sub-sub-section, main#pages.legal .section .sub-sub-section {
+      margin: 10px 0; }
+      main#pages.about .section .sub-sub-section a, main#pages.contact .section .sub-sub-section a, main#pages.legal .section .sub-sub-section a {
+        position: relative;
+        transition: 0.2s ease-in-out; }
+        main#pages.about .section .sub-sub-section a:hover, main#pages.about .section .sub-sub-section a.active, main#pages.contact .section .sub-sub-section a:hover, main#pages.contact .section .sub-sub-section a.active, main#pages.legal .section .sub-sub-section a:hover, main#pages.legal .section .sub-sub-section a.active {
+          color: #bf2a32; }
+          main#pages.about .section .sub-sub-section a:hover::before, main#pages.about .section .sub-sub-section a:hover::after, main#pages.about .section .sub-sub-section a.active::before, main#pages.about .section .sub-sub-section a.active::after, main#pages.contact .section .sub-sub-section a:hover::before, main#pages.contact .section .sub-sub-section a:hover::after, main#pages.contact .section .sub-sub-section a.active::before, main#pages.contact .section .sub-sub-section a.active::after, main#pages.legal .section .sub-sub-section a:hover::before, main#pages.legal .section .sub-sub-section a:hover::after, main#pages.legal .section .sub-sub-section a.active::before, main#pages.legal .section .sub-sub-section a.active::after {
+            width: 100%; }
+        main#pages.about .section .sub-sub-section a::before, main#pages.about .section .sub-sub-section a::after, main#pages.contact .section .sub-sub-section a::before, main#pages.contact .section .sub-sub-section a::after, main#pages.legal .section .sub-sub-section a::before, main#pages.legal .section .sub-sub-section a::after {
+          content: "";
+          position: absolute;
+          right: 0;
+          bottom: -0.1em;
+          width: 0;
+          height: 1px;
+          background: #bf2a32;
+          transition: 0.2s ease-in-out; }
+        main#pages.about .section .sub-sub-section a::before, main#pages.contact .section .sub-sub-section a::before, main#pages.legal .section .sub-sub-section a::before {
+          left: 0;
+          right: initial;
+          top: -0.05em;
+          bottom: initial; }
+        main#pages.about .section .sub-sub-section a::after, main#pages.contact .section .sub-sub-section a::after, main#pages.legal .section .sub-sub-section a::after {
+          left: 50%;
+          right: initial;
+          transform: translate(-50%, 0); }
+        main#pages.about .section .sub-sub-section a::before, main#pages.contact .section .sub-sub-section a::before, main#pages.legal .section .sub-sub-section a::before {
+          content: none; }
+  main#pages.about #contact-us .sub-section, main#pages.contact #contact-us .sub-section, main#pages.legal #contact-us .sub-section {
+    text-align: center; }
+  main#pages.about #subscribe table, main#pages.contact #subscribe table, main#pages.legal #subscribe table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    width: 600px;
+    max-width: 90vw; }
+    main#pages.about #subscribe table td, main#pages.contact #subscribe table td, main#pages.legal #subscribe table td {
+      padding: 4px; }
+  main#pages.about #subscribe input, main#pages.about #subscribe textarea, main#pages.contact #subscribe input, main#pages.contact #subscribe textarea, main#pages.legal #subscribe input, main#pages.legal #subscribe textarea {
+    padding: 10px;
+    width: calc(100% - 20px);
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    background: #fff;
+    font-size: 15px; }
+    main#pages.about #subscribe input::placeholder, main#pages.about #subscribe textarea::placeholder, main#pages.contact #subscribe input::placeholder, main#pages.contact #subscribe textarea::placeholder, main#pages.legal #subscribe input::placeholder, main#pages.legal #subscribe textarea::placeholder {
+      font-size: 12px; }
+    main#pages.about #subscribe input[type="text"], main#pages.about #subscribe input[type="email"], main#pages.about #subscribe textarea[type="text"], main#pages.about #subscribe textarea[type="email"], main#pages.contact #subscribe input[type="text"], main#pages.contact #subscribe input[type="email"], main#pages.contact #subscribe textarea[type="text"], main#pages.contact #subscribe textarea[type="email"], main#pages.legal #subscribe input[type="text"], main#pages.legal #subscribe input[type="email"], main#pages.legal #subscribe textarea[type="text"], main#pages.legal #subscribe textarea[type="email"] {
+      width: calc(100% - 20px); }
+    main#pages.about #subscribe input[type="submit"], main#pages.about #subscribe textarea[type="submit"], main#pages.contact #subscribe input[type="submit"], main#pages.contact #subscribe textarea[type="submit"], main#pages.legal #subscribe input[type="submit"], main#pages.legal #subscribe textarea[type="submit"] {
+      width: 100%;
+      cursor: pointer;
+      display: inline-block;
+      padding: 2px 6px;
+      outline: none;
+      border: none;
+      border-radius: 4px;
+      background: #bf2a32;
+      color: #fff;
+      padding: 7px 0;
+      font-size: 18px; }
+      main#pages.about #subscribe input[type="submit"]:active, main#pages.about #subscribe textarea[type="submit"]:active, main#pages.contact #subscribe input[type="submit"]:active, main#pages.contact #subscribe textarea[type="submit"]:active, main#pages.legal #subscribe input[type="submit"]:active, main#pages.legal #subscribe textarea[type="submit"]:active {
+        background: rgba(191, 42, 50, 0.7); }
+  main#pages.about #subscribe textarea, main#pages.contact #subscribe textarea, main#pages.legal #subscribe textarea {
+    resize: vertical;
+    height: 100px; }
+  main#pages .coming-soon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #bf2a32; }
 
 footer#desktop {
   position: relative;
   margin: 0 auto;
   width: 900px;
   max-width: 95vw;
-  text-align: left;
-  background: #fff; }
+  text-align: left; }
   footer#desktop .left {
     float: left; }
   footer#desktop .right {
@@ -518,20 +681,40 @@ footer#desktop {
         main#pages.home .accordion span.opened .a-title {
           width: 145px;
           height: 145px; }
+    main#pages.kamon .section {
+      padding: 0 0 20px 0; }
+      main#pages.kamon .section .sub-section {
+        width: 100%; }
+        main#pages.kamon .section .sub-section.img {
+          margin: 0; }
+        main#pages.kamon .section .sub-section.txt {
+          float: initial;
+          margin: 0 auto;
+          width: 90%; }
     main#pages.store .shop .prod-group {
       text-align: center;
       width: 100vw; }
       main#pages.store .shop .prod-group .p-g-name {
         width: 90vw;
         text-align: left; }
+        main#pages.store .shop .prod-group .p-g-name::after {
+          width: 70%; }
+      main#pages.store .shop .prod-group .product {
+        width: 90vw;
+        margin: 0 0 20px 0 !important; }
       main#pages.store .shop .prod-group .product, main#pages.store .shop .prod-group .prod-info {
         float: initial;
         margin: 0 auto;
         text-align: left; }
       main#pages.store .shop .prod-group .p-img, main#pages.store .shop .prod-group .prod-info {
-        width: 80vw !important;
-        display: block;
+        width: 90vw !important;
         display: block; }
+      main#pages.store .shop .prod-group .p-img {
+        height: 90vw !important; }
+      main#pages.store .shop .prod-group .p-name {
+        width: 90vw; }
+      main#pages.store .shop .prod-group .p-price {
+        margin: 0 0 20px 0; }
 
   footer#desktop {
     display: none; } }
