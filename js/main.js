@@ -25,14 +25,15 @@ window.addEventListener('hashchange', () => {
 })
 
 // Nav Mobile
-$('nav#mobile').html($('nav#desktop').html())
 $('#nav-trigger').click(() => {
     $('body').toggleClass('nav-opened')
 })
 
 // Append Footer Info
 function appendFooter() {
-    $('#nav-mobile').append(`<footer id="mobile"></footer>`)
+    $('nav#mobile')
+        .html($('nav#desktop').html())
+        .append(`<footer id="mobile"></footer>`)
     $('footer#mobile').html($('footer#desktop').html())
     social = [
         ["tw", "@HNYAunofficial", "https://twitter.com/HNYAunofficial"],

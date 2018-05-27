@@ -1,5 +1,58 @@
-<h1 class="coming-soon">Coming Soon...</h1>
+<div class="top"><div class="centerThis">
+    <img id="hnya-logo" src="img/collection/hnya-1.jpg">
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <p>
+        <a href="#store"><b>Visit Store.</b></a>
+    </p>
+</div></div>
+
+<div class="bottom"><div class="centerThis">
+    <h1>On the Street</h1>
+    <div class="ig-feed"></div>
+</div></div>
+
+<div class="section paypalPowered">
+    <img src="img/store/paypal.png">
+</div>
 
 <script>
+    // Instagram API
+    ig = []
+    id = '6994320.1677ed0.0f13a375c53844eca13560ef461628d2'
+    $.ajax({
+        url: `https://api.instagram.com/v1/users/self/media/recent/?access_token=${id}`,
+        dataType: 'json',
+        async: false,
+        success: function(instagramJSON) {
+            ig = instagramJSON
+        }
+    })
+    for (i = 0; i < 6; i++)
+        $('.ig-feed').append(`
+            <a
+                class="ig-post"
+                href="${ig.data[i].link}"
+                target="_"
+            >
+                <p class="ig-user">
+                    <span
+                        style="background-image: url('${ig.data[i].user.profile_picture}')"
+                    ></span>
+                    <b>@${ig.data[i].user.username}</b>
+                </p>
+                <span
+                    class="ig-img"
+                    style="background-image: url('${ig.data[i].images.standard_resolution.url}')"
+                ></span>
+                <p class="likes">
+                    ${ig.data[i].likes.count}
+                </p>
+            </a>
+        `)
     appendFooter()
 </script>
