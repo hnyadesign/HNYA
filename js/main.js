@@ -37,7 +37,7 @@ function appendFooter() {
     $('footer#mobile').html($('footer#desktop').html())
     social = [
         ["tw", "@HNYAunofficial", "https://twitter.com/HNYAunofficial"],
-        ["insta", "@hannya_design", "https://www.instagram.com/hannya_design/"],
+        ["insta", "@HNYA.vip", "https://www.instagram.com/hnya.vip/"],
         ["fb", "@", ""],
         ["tw", "@HNYAofficial", "https://twitter.com/HNYAofficial"]
     ]
@@ -47,14 +47,25 @@ function appendFooter() {
         $('footer .social')
             .append(`
                 <a href="${social[i][2]}" target="_blank">
-                    <img s-img="${social[i][0]}" src="img/social/${social[i][0]}.png">
+                    <i
+                        s-img="${social[i][0]}"
+                        style="background-image:url('img/social/${social[i][0]}.png')"
+                    ></i>
                 </a>
             `)
-    $('footer .social a img').hover(function() {
-        $(this).attr('src', `img/social/${$(this).attr('s-img')}_hover.png`)
+    $('footer .social a i').hover(function() {
+        $(this).css('background-image', `url('img/social/${$(this).attr('s-img')}_hover.png')`)
     }, function() {
-        $(this).attr('src', `img/social/${$(this).attr('s-img')}.png`)
+        $(this).css('background-image', `url('img/social/${$(this).attr('s-img')}.png')`)
     })
 }
+
+// Header Shadow onScroll
+$('main#pages').scroll(() => {
+    if ($('main#pages').scrollTop() > 0)
+        $('header').addClass('scrolled')
+    else
+        $('header').removeClass('scrolled')
+})
 
 hnyapw = 'hhh'

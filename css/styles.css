@@ -74,17 +74,21 @@ aside.loading {
 header {
   display: grid;
   width: 100vw;
-  grid-template-areas: "blank logo nav";
-  grid-template-columns: 1fr 0.5fr 1fr;
+  grid-template-areas: "blank1 blank2 logo nav cart";
+  grid-template-columns: 40px 1fr 0.5fr 1fr 40px;
   grid-template-rows: 80px;
   align-items: center;
   text-align: center; }
-  header #logo-blank {
-    grid-area: blank; }
+  header #blank1 {
+    grid-area: blank1; }
+  header #blank2 {
+    grid-area: blank2; }
   header #logo {
     grid-area: logo; }
   header nav#desktop {
     grid-area: nav; }
+  header #cart {
+    grid-area: cart; }
 
 main#pages {
   display: grid;
@@ -104,7 +108,7 @@ header {
   height: 100%;
   background: #fff;
   transition: 0.2s ease-in-out; }
-  header:hover {
+  header:hover, header.scrolled {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); }
   header #logo a {
     display: inline-block;
@@ -113,31 +117,29 @@ header {
       color: #bf2a32; }
     header #logo a h1 {
       font-family: "Times New Roman", Times, serif; }
-  header nav {
-    text-align: left; }
-    header nav a {
-      position: relative;
-      transition: 0.2s ease-in-out;
-      letter-spacing: 3px;
-      margin: 0 10px; }
-      header nav a:hover, header nav a.active {
-        color: #bf2a32; }
-        header nav a:hover::before, header nav a:hover::after, header nav a.active::before, header nav a.active::after {
-          width: 100%; }
-      header nav a::before, header nav a::after {
-        content: "";
-        position: absolute;
-        right: 0;
-        bottom: -0.1em;
-        width: 0;
-        height: 1px;
-        background: #bf2a32;
-        transition: 0.2s ease-in-out; }
-      header nav a::before {
-        left: 0;
-        right: initial;
-        top: -0.05em;
-        bottom: initial; }
+  header nav a {
+    position: relative;
+    transition: 0.2s ease-in-out;
+    letter-spacing: 3px;
+    margin: 0 10px; }
+    header nav a:hover, header nav a.active {
+      color: #bf2a32; }
+      header nav a:hover::before, header nav a:hover::after, header nav a.active::before, header nav a.active::after {
+        width: 100%; }
+    header nav a::before, header nav a::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: -0.1em;
+      width: 0;
+      height: 1px;
+      background: #bf2a32;
+      transition: 0.2s ease-in-out; }
+    header nav a::before {
+      left: 0;
+      right: initial;
+      top: -0.05em;
+      bottom: initial; }
   header #nav-trigger {
     cursor: pointer;
     display: none;
@@ -146,6 +148,39 @@ header {
     top: 50%;
     transform: translate(50%, -50%);
     font-size: 48px; }
+  header #cart {
+    cursor: pointer;
+    position: relative;
+    pointer-events: none;
+    width: 100%;
+    height: 40px;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out; }
+    header #cart.added {
+      pointer-events: initial;
+      opacity: 1; }
+      header #cart.added .itemQty {
+        opacity: 1; }
+    header #cart img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      left: 25%;
+      width: 20px;
+      transition: opacity 0.2s ease-in-out; }
+    header #cart .itemQty {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      transform: translate(-75%, 0);
+      pointer-events: none;
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 12px;
+      background: #bf2a32;
+      color: #fff; }
 
 #nav-mobile {
   position: absolute;
@@ -504,7 +539,6 @@ main#pages {
         display: inline-block;
         margin: 20px 0;
         width: 100%;
-        background: #eee;
         font-size: 24px;
         text-transform: uppercase; }
         main#pages.store .shop .prod-group .p-g-name::after {
@@ -513,7 +547,7 @@ main#pages {
           right: 0;
           top: 50%;
           transform: translate(0, -50%);
-          width: 90%;
+          width: 85%;
           height: 1px;
           background: #bf2a32; }
       main#pages.store .shop .prod-group .product {
@@ -525,6 +559,8 @@ main#pages {
         transition: box-shadow 0.2s ease-in-out; }
         main#pages.store .shop .prod-group .product:hover {
           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); }
+        main#pages.store .shop .prod-group .product:hover .p-img-hover, main#pages.store .shop .prod-group .product:hover .buyNow {
+          opacity: 1 !important; }
         main#pages.store .shop .prod-group .product .p-img {
           cursor: pointer;
           position: relative;
@@ -532,8 +568,6 @@ main#pages {
           width: 300px;
           height: 300px;
           background: #fff center/cover no-repeat; }
-          main#pages.store .shop .prod-group .product .p-img:hover .p-img-hover, main#pages.store .shop .prod-group .product .p-img:hover .buyNow {
-            opacity: 1; }
           main#pages.store .shop .prod-group .product .p-img .p-img-hover {
             position: relative;
             z-index: 1;
@@ -648,17 +682,11 @@ main#pages {
     max-width: 90vw;
     max-height: 200px;
     overflow-y: scroll; }
-  main#pages.about .section h1, main#pages.about .section h2,
-  main#pages.about .section .sub-section, main#pages.contact .section h1, main#pages.contact .section h2,
-  main#pages.contact .section .sub-section, main#pages.legal .section h1, main#pages.legal .section h2,
-  main#pages.legal .section .sub-section {
+  main#pages.about .section h1, main#pages.about .section h2, main#pages.about .section .sub-section, main#pages.contact .section h1, main#pages.contact .section h2, main#pages.contact .section .sub-section, main#pages.legal .section h1, main#pages.legal .section h2, main#pages.legal .section .sub-section {
     margin: 0 auto 20px auto;
     width: 900px;
     max-width: 90vw; }
-    main#pages.about .section h1 img, main#pages.about .section h2 img,
-    main#pages.about .section .sub-section img, main#pages.contact .section h1 img, main#pages.contact .section h2 img,
-    main#pages.contact .section .sub-section img, main#pages.legal .section h1 img, main#pages.legal .section h2 img,
-    main#pages.legal .section .sub-section img {
+    main#pages.about .section h1 img, main#pages.about .section h2 img, main#pages.about .section .sub-section img, main#pages.contact .section h1 img, main#pages.contact .section h2 img, main#pages.contact .section .sub-section img, main#pages.legal .section h1 img, main#pages.legal .section h2 img, main#pages.legal .section .sub-section img {
       display: table;
       margin: 0 auto;
       width: 500px;
@@ -666,6 +694,11 @@ main#pages {
   main#pages.about .section .sub-section, main#pages.contact .section .sub-section, main#pages.legal .section .sub-section {
     margin: 10px auto;
     text-align: left; }
+  main#pages.about .section table, main#pages.contact .section table, main#pages.legal .section table {
+    margin: 0 auto;
+    text-align: left; }
+    main#pages.about .section table td, main#pages.contact .section table td, main#pages.legal .section table td {
+      padding: 0 10px; }
   main#pages.about .section a, main#pages.contact .section a, main#pages.legal .section a {
     position: relative;
     transition: 0.2s ease-in-out; }
@@ -772,9 +805,12 @@ footer#desktop {
   footer#desktop a, footer#desktop .divider {
     color: gray;
     font-size: 10px; }
-  footer#desktop .social a img {
+  footer#desktop .social a i {
+    display: inline-block;
     width: 20px;
-    height: 20px; }
+    height: 20px;
+    background: center/cover no-repeat;
+    transition: background-image 0.2s ease-in-out; }
   footer#desktop .social a:nth-child(1) {
     opacity: 0; }
 
@@ -783,10 +819,11 @@ footer#desktop {
     left: 40vw; }
 
   header {
-    grid-template-areas: "logo";
-    grid-template-columns: 1fr;
-    grid-template-rows: 80px;
-    box-shadow: none !important; }
+    grid-template-areas: "blank1 logo cart";
+    grid-template-columns: 40px 1fr 40px;
+    grid-template-rows: 80px; }
+    header #blank2 {
+      display: none; }
     header #nav-trigger {
       display: block; }
 

@@ -108,6 +108,12 @@
                     })
                 })
             })
+            // Show Shopping Cart
+            $(this).parent().find('.addToCart').click(() => {
+                cart = true
+                localStorage.setItem('cart', cart)
+                shoppingCart()
+            })
             // Close Product Info
             $this = $(this)
             $(this).parent().find('.close-p-i').click(() => {
@@ -120,6 +126,14 @@
             })
         })
     })
+
+    cart = localStorage.getItem('cart')
+        if (cart == null) cart = false
+    function shoppingCart() {
+        if (cart) $('header #cart').addClass('added')
+        else $('header #cart').removeClass('added')
+    }
+    shoppingCart()
 
     appendFooter()
 </script>
