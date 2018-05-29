@@ -31,8 +31,6 @@ function loadPages() {
     $('main#pages #content')
         .html('')
         .load(`pages/${hash}.html`)
-
-    $('#nav-trigger').click()
 }
 loadPages()
 window.addEventListener('hashchange', loadPages)
@@ -41,7 +39,6 @@ window.addEventListener('hashchange', loadPages)
 $('#nav-trigger').click(() => {
     $('body').toggleClass('nav-opened')
 })
-
 // Append Footer Info
 function appendFooter() {
     $('nav#mobile')
@@ -70,6 +67,11 @@ function appendFooter() {
         $(this).css('background-image', `url('img/social/${$(this).attr('s-img')}_hover.png')`)
     }, function() {
         $(this).css('background-image', `url('img/social/${$(this).attr('s-img')}.png')`)
+    })
+
+    // Close Nav-Mobile onClick
+    $('#nav-mobile nav#mobile a, #footer-links .left a').click(() => {
+        $('body').removeClass('nav-opened')
     })
 }
 
