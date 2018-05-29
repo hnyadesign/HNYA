@@ -916,12 +916,11 @@ footer #footer-right {
   footer #footer-right::after {
     display: none; }
   footer #footer-right.paypal {
-    background-image: url("../img/store/paypal-2.png");
-    transform: scale(1.5); }
+    background-image: url("../img/store/paypal.png"); }
   footer #footer-right.nuotsu {
     background-image: url("../img/about/nuotsu.png"); }
 
-@media (max-width: 750px) {
+@media (max-width: 900px) {
   body.nav-opened {
     left: 40vw; }
 
