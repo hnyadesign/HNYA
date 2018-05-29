@@ -2,13 +2,26 @@ function loadPages() {
     hash = location.hash.substr(1)
     if (hash == '') hash = 'home'
 
+    if (hash == 'about')
+        $('footer#desktop #footer-right').attr({
+            'href': 'https://nuotsu.github.io',
+            'target': '_blank',
+            'class': 'nuotsu'
+        })
+    else if (hash == 'collection' || hash == 'hnya' || hash == 'kamon' || hash == 'store')
+        $('footer#desktop #footer-right')
+            .attr('class', 'paypal')
+            .removeAttr('href target')
+    else
+        $('footer#desktop #footer-right')
+            .attr('class', '')
+            .removeAttr('href target')
+
     $(document)
         .ajaxStart(function() {
-            $('main').hide()
-            $('aside.loading').fadeIn()
+            $('aside.loading').show()
         })
         .ajaxStop(function() {
-            $('main').show()
             setTimeout(() => {
                 $('aside.loading').fadeOut()
             }, 1000 * .5)
@@ -18,11 +31,11 @@ function loadPages() {
     $('main#pages #content')
         .html('')
         .load(`pages/${hash}.html`)
+
+    $('#nav-trigger').click()
 }
 loadPages()
-window.addEventListener('hashchange', () => {
-    loadPages()
-})
+window.addEventListener('hashchange', loadPages)
 
 // Nav Mobile
 $('#nav-trigger').click(() => {
@@ -34,7 +47,6 @@ function appendFooter() {
     $('nav#mobile')
         .html($('nav#desktop').html())
         .append(`<footer id="mobile"></footer>`)
-    $('footer#mobile').html($('footer#desktop').html())
     social = [
         ["tw", "@HNYAunofficial", "https://twitter.com/HNYAunofficial"],
         ["insta", "@HNYA.vip", "https://www.instagram.com/hnya.vip/"],
@@ -53,6 +65,7 @@ function appendFooter() {
                     ></i>
                 </a>
             `)
+    $('footer#mobile').html($('footer#desktop').html())
     $('footer .social a i').hover(function() {
         $(this).css('background-image', `url('img/social/${$(this).attr('s-img')}_hover.png')`)
     }, function() {

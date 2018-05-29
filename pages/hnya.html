@@ -14,16 +14,14 @@
 <div class="bottom"><div class="centerThis">
     <h1>On the Street</h1>
     <div class="ig-feed"></div>
+    <a class="seeMore" target="_blank">See more...</a>
 </div></div>
-
-<div class="section paypalPowered">
-    <img src="img/store/paypal.png">
-</div>
 
 <script>
     // Instagram API
     ig = []
     id = '6994320.1677ed0.0f13a375c53844eca13560ef461628d2'
+    // id = '7866993303.1677ed0.8546dbcc04dc449a9e1230c631bc608a'
     $.ajax({
         url: `https://api.instagram.com/v1/users/self/media/recent/?access_token=${id}`,
         dataType: 'json',
@@ -54,5 +52,19 @@
                 </p>
             </a>
         `)
+    $('.ig-feed').before(`
+        <p class="ig-user-title">
+            <span
+                style="background-image: url('${ig.data[0].user.profile_picture}')"
+            ></span>
+            <b>
+                <a
+                    href="https://instagram.com/${ig.data[0].user.username}"
+                    target="_blank"
+                >@${ig.data[0].user.username}</a>
+            </b>
+        </p>
+    `)
+    $('.seeMore').attr('href', `https://instagram.com/${ig.data[0].user.username}`)
     appendFooter()
 </script>
