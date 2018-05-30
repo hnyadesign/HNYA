@@ -750,8 +750,8 @@ main#pages {
       main#pages.store .shop .prod-info .close-p-i {
         cursor: pointer;
         position: absolute;
-        right: 0;
-        top: 0;
+        left: 0;
+        top: -5px;
         display: inline-block;
         width: 30px;
         height: 30px;
