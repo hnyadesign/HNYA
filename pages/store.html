@@ -97,7 +97,7 @@
                     `)
                 }
                 $(this).parent().find('.addToCart').attr({
-                    'href': $(this).parent().find('.options').val(),
+                    'href': $(this).parent().find('.options').val().split('|')[0],
                     'target': '_blank'
                 })
                 $(this).change(() => {
