@@ -190,7 +190,7 @@ header {
       width: 12px;
       height: 12px;
       border-radius: 12px;
-      background: #bf2a32;
+      background: linear-gradient(0deg, #bf2a32, #ec4316);
       color: #fff; }
 
 #nav-mobile {
@@ -432,6 +432,7 @@ main#pages {
       main#pages.hnya .top a:hover {
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); }
       main#pages.hnya .top a:active {
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
         background: linear-gradient(0deg, #bf2a32, #bf2a32); }
   main#pages.hnya .bottom {
     position: relative;
@@ -533,6 +534,7 @@ main#pages {
       main#pages.hnya .bottom .seeMore:hover {
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); }
       main#pages.hnya .bottom .seeMore:active {
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
         background: linear-gradient(0deg, #bf2a32, #bf2a32); }
   main#pages.kamon .section {
     width: 900px;
@@ -567,6 +569,7 @@ main#pages {
       main#pages.kamon .section a:hover {
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); }
       main#pages.kamon .section a:active {
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
         background: linear-gradient(0deg, #bf2a32, #bf2a32); }
   main#pages.store .shop {
     background: #eee; }
@@ -642,6 +645,7 @@ main#pages {
             main#pages.store .shop .prod-group .product .p-img .buyNow:hover {
               box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); }
             main#pages.store .shop .prod-group .product .p-img .buyNow:active {
+              box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
               background: linear-gradient(0deg, #bf2a32, #bf2a32); }
           main#pages.store .shop .prod-group .product .p-img .p-img-carousel {
             position: absolute;
@@ -681,6 +685,7 @@ main#pages {
           main#pages.store .shop .prod-group .product .p-price:hover {
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); }
           main#pages.store .shop .prod-group .product .p-price:active {
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
             background: linear-gradient(0deg, #bf2a32, #bf2a32); }
           main#pages.store .shop .prod-group .product .p-price::before {
             content: "$ "; }
@@ -715,6 +720,7 @@ main#pages {
         main#pages.store .shop .prod-info .addToCart:hover {
           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); }
         main#pages.store .shop .prod-info .addToCart:active {
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
           background: linear-gradient(0deg, #bf2a32, #bf2a32); }
       main#pages.store .shop .prod-info .special {
         color: gray; }
@@ -829,6 +835,7 @@ main#pages {
       main#pages.about #subscribe input[type="submit"]:hover, main#pages.about #subscribe textarea[type="submit"]:hover, main#pages.contact #subscribe input[type="submit"]:hover, main#pages.contact #subscribe textarea[type="submit"]:hover, main#pages.legal #subscribe input[type="submit"]:hover, main#pages.legal #subscribe textarea[type="submit"]:hover {
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); }
       main#pages.about #subscribe input[type="submit"]:active, main#pages.about #subscribe textarea[type="submit"]:active, main#pages.contact #subscribe input[type="submit"]:active, main#pages.contact #subscribe textarea[type="submit"]:active, main#pages.legal #subscribe input[type="submit"]:active, main#pages.legal #subscribe textarea[type="submit"]:active {
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
         background: linear-gradient(0deg, #bf2a32, #bf2a32); }
   main#pages.about #subscribe textarea, main#pages.contact #subscribe textarea, main#pages.legal #subscribe textarea {
     resize: vertical;
