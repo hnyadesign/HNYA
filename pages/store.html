@@ -59,9 +59,9 @@
             })
         })
         // Open Product Info
-        $(this).click(() => {
-            $(this).parent().find('.product').hide()
-            $(this).show()
+        $(this).click(() => { if (!$(this).hasClass('detailed')) {
+            $(this).parent().find('.product').removeClass('detailed').hide()
+            $(this).addClass('detailed').show()
             $('.p-img-carousel', this).show()
             $('.p-img-hover', this).hide()
             if ($(this).attr('p-paypal') != 'undefined')
@@ -75,6 +75,7 @@
                             p-paypal="${$(this).attr('p-paypal')}"
                         ></select>
                         <a class="addToCart">Add To Cart</a>
+                        <span class="special">*Domestic shipping only</span>
                     `)
                     .show()
             else
@@ -92,7 +93,7 @@
                 for (i in options) {
                     opt = options[i].split('|')
                     $(this).append(`
-                        <option value="${opt[1]}">${opt[0]}</option>
+                        <option value="${opt[1]}|${opt[2]}">${opt[0]}</option>
                     `)
                 }
                 $(this).parent().find('.addToCart').attr({
@@ -101,9 +102,10 @@
                 })
                 $(this).change(() => {
                     $(this).parent().find('.addToCart').attr({
-                        'href': $(this).parent().find('.options').val(),
+                        'href': $(this).parent().find('.options').val().split('|')[0],
                         'target': '_blank'
                     })
+                    $(this).parent().parent().find('.detailed .p-img .p-img-carousel').find('i').eq($(this).val().split('|')[1]).mouseenter()
                 })
             })
             // Show Shopping Cart
@@ -121,7 +123,7 @@
             })
             $(document).keydown(function(e) {
                 if (e.which == 27) $('.close-p-i').click()	// esc
-            })
+            }) }
         })
     })
 

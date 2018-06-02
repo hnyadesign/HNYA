@@ -5,10 +5,10 @@
             "name": "HNYA Tee: <em>\"ろくろっくび\" / Rokurokkubi</em>",
             "price": 25,
             "paypal": [
-                "White Shirt with Red|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CKHXAL49GKSYL",
-                "White Shirt with Black|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UF9A74LYA6V6Q",
-                "Black Shirt with Red|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BCHUZRWNBPB3W",
-                "Black Shirt with White|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PGCATCRHN9BPL"
+                "White Shirt with Red|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CKHXAL49GKSYL|0",
+                "White Shirt with Black|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UF9A74LYA6V6Q|1",
+                "Ox Blood Black Shirt with Red|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BCHUZRWNBPB3W|2",
+                "Ox Blood Black Shirt with White|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PGCATCRHN9BPL|3"
             ],
             "image": [
                 "T-01/t-01-w-r.jpg",
@@ -25,20 +25,20 @@
             "name": "HNYA Tee: <em>\"貧乏神\" / Binbōgami</em>",
             "price": 25,
             "paypal": [
-                "White Shirt with Red|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DSQJC6JGR3JS8",
-                "White Shirt with Black|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VF9CTH3GFXHHS",
-                "Black Shirt with Red|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YCTKPXBLHJD9Y",
-                "Black Shirt with White|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=N2246P6APA9CY"
+                "White Shirt with Red|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DSQJC6JGR3JS8|0",
+                "White Shirt with Black|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VF9CTH3GFXHHS|2",
+                "Ox Blood Black Shirt with Red|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YCTKPXBLHJD9Y|4",
+                "Ox Blood Black Shirt with White|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=N2246P6APA9CY|6"
             ],
             "image": [
-                "T-02/t-02-b-b-r.jpg",
-                "T-02/t-02-f-b-r.jpg",
-                "T-02/t-02-b-b-w.jpg",
-                "T-02/t-02-f-b-w.jpg",
                 "T-02/t-02-b-w-r.jpg",
                 "T-02/t-02-f-w-r.jpg",
                 "T-02/t-02-b-w-b.jpg",
-                "T-02/t-02-f-w-b.jpg"
+                "T-02/t-02-f-w-b.jpg",
+                "T-02/t-02-b-b-r.jpg",
+                "T-02/t-02-f-b-r.jpg",
+                "T-02/t-02-b-b-w.jpg",
+                "T-02/t-02-f-b-w.jpg"
             ],
             "description":
                 "<b>Description</b>: Aggressive design combined with a strong impression. The T-02 is unapologetic and uncaring. It’s aggressive full back design Hannya mask coupled with bold kanji create a bold statement. For those who know who they are and what they want.",
