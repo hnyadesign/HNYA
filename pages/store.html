@@ -117,6 +117,7 @@
             // Close Product Info
             $this = $(this)
             $(this).parent().find('.close-p-i').click(() => {
+                $(this).parent().find('.product').removeClass('detailed')
                 $(this).parent().find('.prod-info').hide()
                 $(this).parent().find('.p-img-carousel').hide()
                 $(this).parent().find('.product, .p-img-hover').show()
