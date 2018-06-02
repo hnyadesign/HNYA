@@ -393,52 +393,54 @@ main#pages {
       main#pages.collection .dichotomy .right a:hover {
         transform: translate(50%, -50%) scale(1.03); }
   main#pages.hnya .top, main#pages.hnya .bottom {
-    position: relative;
-    height: calc(100vh - 80px); }
+    position: relative; }
     main#pages.hnya .top .centerThis, main#pages.hnya .bottom .centerThis {
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
       width: 100%; }
-  main#pages.hnya .top #hnya-logo {
-    width: 500px;
-    max-width: 100%;
-    max-height: 100%; }
-  main#pages.hnya .top p {
-    margin: 20px auto;
-    width: 750px;
-    max-width: 90vw; }
-  main#pages.hnya .top a {
-    position: relative;
-    transition: 0.2s ease-in-out;
-    font-size: 24px; }
-    main#pages.hnya .top a:hover, main#pages.hnya .top a.active {
-      color: #bf2a32; }
-      main#pages.hnya .top a:hover::before, main#pages.hnya .top a:hover::after, main#pages.hnya .top a.active::before, main#pages.hnya .top a.active::after {
-        width: 100%; }
-    main#pages.hnya .top a::before, main#pages.hnya .top a::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      bottom: -0.1em;
-      width: 0;
-      height: 1px;
-      background: #bf2a32;
-      transition: 0.2s ease-in-out; }
-    main#pages.hnya .top a::before {
-      left: 0;
-      right: initial;
-      top: -0.05em;
-      bottom: initial; }
-    main#pages.hnya .top a::after {
-      left: 50%;
-      right: initial;
-      transform: translate(-50%, 0); }
-    main#pages.hnya .top a::before {
-      content: none; }
+  main#pages.hnya .top {
+    height: calc(100vh - 80px); }
+    main#pages.hnya .top #hnya-logo {
+      width: 500px;
+      max-width: 100%;
+      max-height: 100%; }
+    main#pages.hnya .top p {
+      margin: 20px auto;
+      width: 750px;
+      max-width: 90vw; }
+    main#pages.hnya .top a {
+      position: relative;
+      transition: 0.2s ease-in-out;
+      font-size: 24px; }
+      main#pages.hnya .top a:hover, main#pages.hnya .top a.active {
+        color: #bf2a32; }
+        main#pages.hnya .top a:hover::before, main#pages.hnya .top a:hover::after, main#pages.hnya .top a.active::before, main#pages.hnya .top a.active::after {
+          width: 100%; }
+      main#pages.hnya .top a::before, main#pages.hnya .top a::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: -0.1em;
+        width: 0;
+        height: 1px;
+        background: #bf2a32;
+        transition: 0.2s ease-in-out; }
+      main#pages.hnya .top a::before {
+        left: 0;
+        right: initial;
+        top: -0.05em;
+        bottom: initial; }
+      main#pages.hnya .top a::after {
+        left: 50%;
+        right: initial;
+        transform: translate(-50%, 0); }
+      main#pages.hnya .top a::before {
+        content: none; }
   main#pages.hnya .bottom {
     position: relative;
+    height: 100vh;
     background: #eee; }
     main#pages.hnya .bottom h1 {
       padding: 10px 0; }
