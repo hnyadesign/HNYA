@@ -440,7 +440,7 @@ main#pages {
         content: none; }
   main#pages.hnya .bottom {
     position: relative;
-    height: auto;
+    height: 100vh;
     background: #eee; }
     main#pages.hnya .bottom h1 {
       padding: 10px 0; }
