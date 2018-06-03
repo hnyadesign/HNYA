@@ -4,12 +4,32 @@
             "id": "t-01",
             "name": "HNYA Tee: <em>\"ろくろっくび\" / Rokurokkubi</em>",
             "price": 25,
-            "paypal": [
-                "White Shirt with Red|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CKHXAL49GKSYL|0",
-                "White Shirt with Black|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UF9A74LYA6V6Q|1",
-                "Ox Blood Black Shirt with Red|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BCHUZRWNBPB3W|2",
-                "Ox Blood Black Shirt with White|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PGCATCRHN9BPL|3"
-            ],
+            "paypal": {
+                "White Shirt with Red|0": {
+                    "xs": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BNN5MSJUF7524",
+                    "s": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6WPRFPFC24FG6",
+                    "m": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=998HERSRULB9U",
+                    "l": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LXCRS9JE9ALQY"
+                },
+                "White Shirt with Black|1": {
+                    "xs": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UF9A74LYA6V6Q",
+                    "s": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KMM2Y9MSFA2UG",
+                    "m": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HWBR4MCMDMVYG",
+                    "l": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LV35DG98YUBD2"
+                },
+                "Ox Blood Black Shirt with Red|2": {
+                    "xs": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BCHUZRWNBPB3W",
+                    "s": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HA8WLD8NGGNSQ",
+                    "m": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SMPL9BQHT4AKJ",
+                    "l": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ESAVDEZBG6KSU"
+                },
+                "Ox Blood Black Shirt with White|3": {
+                    "xs": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PGCATCRHN9BPL",
+                    "s": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VGCHFS3MSJCBN",
+                    "m": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BTNG8NETGKHC6",
+                    "l": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=23X4KECYTBNPQ"
+                }
+            },
             "image": [
                 "T-01/t-01-w-r.jpg",
                 "T-01/t-01-w-b.jpg",
@@ -24,12 +44,32 @@
             "id": "t-02",
             "name": "HNYA Tee: <em>\"貧乏神\" / Binbōgami</em>",
             "price": 25,
-            "paypal": [
-                "White Shirt with Red|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DSQJC6JGR3JS8|0",
-                "White Shirt with Black|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VF9CTH3GFXHHS|2",
-                "Ox Blood Black Shirt with Red|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YCTKPXBLHJD9Y|4",
-                "Ox Blood Black Shirt with White|https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=N2246P6APA9CY|6"
-            ],
+            "paypal": {
+                "White Shirt with Red|0": {
+                    "xs": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DSQJC6JGR3JS8",
+                    "s": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9XGLYQMJC7MP4",
+                    "m": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PUC366K3HLZ8A",
+                    "l": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HESAU3Z8XZQGL"
+                },
+                "White Shirt with Black|2": {
+                    "xs": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VF9CTH3GFXHHS",
+                    "s": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6NVR96WHSZC5S",
+                    "m": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6S9VLZRVHF4B6",
+                    "l": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7SKHR9ZV74NAE"
+                },
+                "Ox Blood Black Shirt with Red|4": {
+                    "xs": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YCTKPXBLHJD9Y",
+                    "s": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XCFNULG3GQYZE",
+                    "m": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V6BEVKLHCSWYL",
+                    "l": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZXUJ6CWHMJMEW"
+                },
+                "Ox Blood Black Shirt with White|6": {
+                    "xs": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=N2246P6APA9CY",
+                    "s": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XK4FL36YZZRJ6",
+                    "m": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UZLE7RENVT734",
+                    "l": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6MTCLEKGJKHNW"
+                }
+            },
             "image": [
                 "T-02/t-02-b-w-r.jpg",
                 "T-02/t-02-f-w-r.jpg",
@@ -60,7 +100,7 @@
                 "MON/mon-w-2.jpg"
             ],
             "description":
-                "<b>Description</b>: The Mon (or Kamon) series is all about you. Our “investor series,” each hoodie is a custom made 1 of 1 product that uses your Japanese family crest alongside our brand. Each design is pre-generated with an open dialogue. Here are the steps. <br><br>&nbsp;&nbsp;&nbsp;&nbsp;1. Send us an email with<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Your Family Crest<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*3 Letters of your choice (Can Be Initials)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Color combination (See Chart Below)<br>&nbsp;&nbsp;&nbsp;&nbsp;2.   We’ll send you a digital design<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Give us your confirmation and we’ll send you a Paypal checkout link! <br>&nbsp;&nbsp;&nbsp;&nbsp;4. Receive your jacket in 2 weeks (it is custom made)",
+                "<b>Description</b>: The Mon (or Kamon) series is all about you. Our “investor series,” each hoodie is a custom made 1 of 1 product that uses your Japanese family crest alongside our brand. Each design is pre-generated with an open dialogue. Here are the steps. <br><br>&nbsp;&nbsp;&nbsp;&nbsp;1. Send us an email with<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Your Family Crest<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*3 Letters of your choice (Can Be Initials)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Color combination (<a href='img/store/size-chart.png' target='_blank'>See Chart</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;2.   We’ll send you a digital design<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Give us your confirmation and we’ll send you a Paypal checkout link! <br>&nbsp;&nbsp;&nbsp;&nbsp;4. Receive your jacket in 2 weeks (it is custom made)",
             "material":
                 "<b>Material</b>: 52% combed and ring-spun long staple cotton combined with 48% poly fleece for an extra soft feel, and finished with a high quality CPSIA certified vinyl application."
         }

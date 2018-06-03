@@ -697,13 +697,14 @@ main#pages {
       padding: 30px 0 0 0; }
       main#pages.store .shop .prod-info .p-desc, main#pages.store .shop .prod-info .p-mat {
         margin: 0 0 20px 0; }
-      main#pages.store .shop .prod-info .options, main#pages.store .shop .prod-info .addToCart {
+      main#pages.store .shop .prod-info .options, main#pages.store .shop .prod-info .sizes, main#pages.store .shop .prod-info .addToCart {
+        margin: 4px;
         font-size: 18px; }
-      main#pages.store .shop .prod-info .options {
+      main#pages.store .shop .prod-info .options, main#pages.store .shop .prod-info .sizes {
         background: #fff;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
         transition: box-shadow 0.2s ease-in-out; }
-        main#pages.store .shop .prod-info .options:hover {
+        main#pages.store .shop .prod-info .options:hover, main#pages.store .shop .prod-info .sizes:hover {
           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); }
       main#pages.store .shop .prod-info .options[p-paypal="undefined"].undefined {
         display: none; }

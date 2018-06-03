@@ -22,7 +22,7 @@
                 <div
                     class="product"
                     p-id="${store[i][j].id}"
-                    p-paypal="${store[i][j].paypal}"
+                    p-paypal='${JSON.stringify(store[i][j].paypal)}'
                     p-desc="${store[i][j].description}"
                     p-mat="${store[i][j].material}"
                 >
@@ -74,6 +74,16 @@
                             class="options"
                             p-paypal="${$(this).attr('p-paypal')}"
                         ></select>
+                        <select
+                            class="sizes"
+                            p-paypal='${$(this).attr('p-paypal')}'
+                        >
+                            <option disabled default selected>Choose Size...</option>
+                            <option value="xs">XS</option>
+                            <option value="s">S</option>
+                            <option value="m">M</option>
+                            <option value="l">L</option>
+                        </select>
                         <a class="addToCart">Add To Cart</a>
                         <span class="special">*Domestic shipping only</span>
                     `)
@@ -87,27 +97,22 @@
                         <a href="mailto:hnyadesign@gmail.com" class="addToCart">Email Now!</a>
                     `)
                     .show()
-            // Product Options
-            $(this).parent().find('.options').each(function() {
-                options = $(this).attr('p-paypal').split(',')
-                for (i in options) {
-                    opt = options[i].split('|')
-                    $(this).append(`
-                        <option value="${opt[1]}|${opt[2]}">${opt[0]}</option>
+            // Product Options & Sizes
+            $(this).parent().find('.sizes').each(function() {
+                options = JSON.parse($(this).attr('p-paypal'))
+                for (i in options)
+                    $(this).parent().find('.options').append(`
+                        <option value="${i}">${i.split('|')[0]}</option>
                     `)
-                }
-                $(this).parent().find('.addToCart').attr({
-                    'href': $(this).parent().find('.options').val().split('|')[0],
-                    'target': '_blank'
-                })
-                $(this).change(() => {
-                    $(this).parent().find('.addToCart').attr({
-                        'href': $(this).parent().find('.options').val().split('|')[0],
-                        'target': '_blank'
-                    })
-                    $(this).parent().parent().find('.detailed .p-img .p-img-carousel').find('i').eq($(this).val().split('|')[1]).mouseenter()
-                })
+
             })
+            function changePayPal() {
+                chosenProduct = JSON.parse($(this).parent().find('.sizes').attr('p-paypal'))[$(this).parent().find('.options').val()][$(this).parent().find('.sizes').val()]
+                $(this).parent().parent().find('.detailed .p-img .p-img-carousel').find('i').eq($(this).parent().find('.options').val().split('|')[1]).mouseenter()
+                $(this).parent().find('.addToCart').attr('href', chosenProduct)
+            }
+            $(this).parent().find('.options').change(changePayPal)
+            $(this).parent().find('.sizes').change(changePayPal)
             // Show Shopping Cart
             $(this).parent().find('.addToCart').click(() => {
                 cart = true
