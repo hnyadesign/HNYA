@@ -1,4 +1,16 @@
-<div class="shop"></div>
+<div class="store"></div>
+
+<div class="prod-preview">
+    <aside>
+        <h1 class="prod-name"></h1>
+        <div class="prod-img">
+            <div class="prod-img-carousel"></div>
+        </div>
+        <div class="prod-info"></div>
+    </aside>
+    <div class="prod-preview-bg"></div>
+    <i class="prod-preview-close" title="Press ESC"></i>
+</div>
 
 <script>
     // Initialize store.json
@@ -11,140 +23,121 @@
             store = storeJSON
         }
     })
+
     for (i in store) {
-        $('.shop').append(`
-            <div class="prod-group" p-grp="${i}">
-                <div class="p-g-name">${i}</div>
-            </div>
-        `)
-        for (j in store[i])
-            $(`.prod-group[p-grp="${i}"]`).append(`
-                <div
-                    class="product"
-                    p-id="${store[i][j].id}"
-                    p-paypal='${JSON.stringify(store[i][j].paypal)}'
-                    p-desc="${store[i][j].description}"
-                    p-mat="${store[i][j].material}"
-                >
-                    <span class="p-img" p-img=${store[i][j].image}>
-                        <span class="p-img-hover">
-                            <p class="buyNow">Buy Now!</p>
-                        </span>
-                        <span class="p-img-carousel"></span>
-                    </span>
-                    <p class="p-name">${store[i][j].name}</p>
-                    <p class="p-price">${store[i][j].price}</p>
-                </div>
+        for (j in store[i]) {
+            newProd = ''; if (store[i][j].new) newProd = 'newProd'
+            $('main .store').append(`
+                <aside category="${i}" product="${j}" ${newProd}>
+                    <p
+                        class="prod-img"
+                        style="background-image: url('img/store/${store[i][j].img[0]}')"
+                    ></p>
+                    <p class="prod-category">${i}</p>
+                    <p class="prod-price">$ ${store[i][j].price}</p>
+                    <p class="prod-name">${j}</p>
+                </aside>
             `)
-        $(`.prod-group[p-grp="${i}"]`).append('<div class="prod-info"></div>')
+        }
+        $(`[category="${i}"]`).eq(0).before(`
+                <h3><span>${i}</span></h3>
+        `)
     }
-    // Product Details
-    $('.product').each(function() {
-        // Product Image
-        p_img = $('.p-img', this).attr('p-img').split(',')
-        $('.p-img', this).css({
-            'background-image': `url('img/store/${p_img[0]}')`
-        })
-        $('.p-img-carousel', this).hide().html('')
-        for (i in p_img)
-            $('.p-img-carousel', this).append(`<i></i>`)
-        $('.p-img-carousel i', this).each(function() {
-            $(this).mouseenter(() => {
-                p_img_hover = $(this).parent().parent().attr('p-img').split(',')
-                $('.p-img-carousel i').removeClass('active')
-                $(this).addClass('active')
-                $(this).parent().parent().css({
-                    'background-image': `url('img/store/${p_img_hover[$(this).index()]}')`
+
+    // Product Preview
+    $('[category]').each(function() {
+        $(this).click(() => {
+            $('.prod-preview').fadeIn()
+
+            // New Product Tag
+            if ($(this).attr('newProd') != undefined) $('.prod-preview aside').attr('newProd', true)
+            else $('.prod-preview aside').removeAttr('newProd', false)
+
+            product = store[$(this).attr('category')][$(this).attr('product')]
+            // .prod-img
+            $('.prod-preview .prod-img').css({
+                'background-image': `url('img/store/${product.img[0]}')`
+            })
+            // .prod-img-carousel
+            $('.prod-img-carousel').html('')
+            for (i in product.img) $('.prod-img-carousel').append('<i></i>')
+            $('.prod-img-carousel i')
+                .css('width', `calc(100% / ${product.img.length} - 4px)`)
+                .removeClass('active')
+                .eq(0).addClass('active')
+            $('.prod-img-carousel i').each(function() {
+                $(this).mouseenter(() => {
+                    $('.prod-img-carousel i').removeClass('active')
+                    $(this).addClass('active')
+                    $('.prod-preview .prod-img').css({
+                        'background-image': `url('img/store/${product.img[$(this).index()]}')`
+                    })
                 })
             })
-        })
-        // Open Product Info
-        $(this).click(() => { if (!$(this).hasClass('detailed')) {
-            $(this).parent().find('.product').removeClass('detailed').hide()
-            $(this).addClass('detailed').show()
-            $('.p-img-carousel', this).show()
-            $('.p-img-hover', this).hide()
-            if ($(this).attr('p-paypal') != 'undefined')
-                $(this).parent().find('.prod-info')
-                    .html(`
-                        <i class="close-p-i"><i>×</i></i>
-                        <p class="p-desc">${$(this).attr('p-desc')}</p>
-                        <p class="p-mat">${$(this).attr('p-mat')}</p>
-                        <select
-                            class="options"
-                            p-paypal="${$(this).attr('p-paypal')}"
-                        ></select>
-                        <select
-                            class="sizes"
-                            p-paypal='${$(this).attr('p-paypal')}'
-                        >
-                            <option disabled default selected>Choose Size...</option>
-                            <option value="xs">XS</option>
-                            <option value="s">S</option>
-                            <option value="m">M</option>
-                            <option value="l">L</option>
-                        </select>
-                        <a
-                            class="sizeChart"
-                            target="_blank"
-                            href="img/store/size-chart.png"
-                        >*</a>
-                        <a class="addToCart">Add To Cart</a>
-                        <span class="special">*Domestic shipping only</span>
-                    `)
-                    .show()
-            else
-                $(this).parent().find('.prod-info')
-                    .html(`
-                        <i class="close-p-i"><i>×</i></i>
-                        <p class="p-desc">${$(this).attr('p-desc')}</p>
-                        <p class="p-mat">${$(this).attr('p-mat')}</p>
-                        <a href="mailto:hnyadesign@gmail.com" class="addToCart">Email Now!</a>
-                    `)
-                    .show()
-            // Product Options & Sizes
-            $(this).parent().find('.sizes').each(function() {
-                options = JSON.parse($(this).attr('p-paypal'))
-                for (i in options)
-                    $(this).parent().find('.options').append(`
-                        <option value="${i}">${i.split('|')[0]}</option>
-                    `)
 
-            })
-            function changePayPal() {
-                chosenProduct = JSON.parse($(this).parent().find('.sizes').attr('p-paypal'))[$(this).parent().find('.options').val()][$(this).parent().find('.sizes').val()]
-                $(this).parent().parent().find('.detailed .p-img .p-img-carousel').find('i').eq($(this).parent().find('.options').val().split('|')[1]).mouseenter()
-                $(this).parent().find('.addToCart').attr('href', chosenProduct)
+            // .prod-info
+            $('.prod-preview .prod-name').html(`
+                ${$(this).attr('product')}
+                <span class="prod-price">$ ${product.price}</span>
+            `)
+            $('.prod-info').html(`
+                <p class="prod-description">${product.description}</p>
+                <p class="prod-material">${product.material}</p>
+                <hr>
+                <p class="purchase">
+                    <b>
+                        <select id="color"></select>
+                        <span class="select_arrows">▼</span>
+                    </b><b>
+                        <select id="size"></select>
+                        <span class="select_arrows">▼</span>
+                    </b>
+                    <a
+                        class="sizeChart"
+                        target="_blank"
+                        href="img/store/size-chart.png"
+                    >*</a>
+                    <a
+                        class="buy"
+                        target="_blank"
+                    >${product.buy}</a>
+                    <span class="special">(Domestic shipping only)</span>
+                </p>
+            `)
+
+            for (i in product.variations) {
+                $('.purchase').attr('variations', i)
+                $('.purchase select#color').append(`
+                    <option value="${i}">${i.split('|')[0]}</option>
+                `)
             }
-            $(this).parent().find('.options').change(changePayPal)
-            $(this).parent().find('.sizes').change(changePayPal)
-            // Show Shopping Cart
-            $(this).parent().find('.addToCart').click(() => {
-                cart = true
-                localStorage.setItem('cart', cart)
-                shoppingCart()
-            })
-            // Close Product Info
-            $this = $(this)
-            $(this).parent().find('.close-p-i').click(() => {
-                $(this).parent().find('.product').removeClass('detailed')
-                $(this).parent().find('.prod-info').hide()
-                $(this).parent().find('.p-img-carousel').hide()
-                $(this).parent().find('.product, .p-img-hover').show()
-            })
-            $(document).keydown(function(e) {
-                if (e.which == 27) $('.close-p-i').click()	// esc
-            }) }
+            function optionSize() {
+                if ($('.purchase').attr('variations') == 'noVariation')
+                    $('.purchase[variations="noVariation"] .buy').attr('href', product.variations['noVariation']['noVariation'])
+                else
+                    $('.purchase .buy').attr('href', $('.purchase select#size').val())
+            }
+            optionSize()
+            $('.purchase select').change(optionSize)
+            function optionColor() {
+                $('.purchase select#size').html('<option selected default disabled>Size</option>')
+                for (i in product.variations[$('.purchase select#color').val()])
+                    $('.purchase select#size').append(`
+                        <option value="${product.variations[$('.purchase select#color').val()][i]}">${i}</option>
+                    `)
+                $('.prod-preview .prod-img-carousel i').eq($('.purchase select#color').val().split('|')[1]).mouseenter()
+            }
+            optionColor()
+            $('.purchase select#color').change(optionColor)
         })
     })
 
-    cart = localStorage.getItem('cart')
-        if (cart == null) cart = false
-    function shoppingCart() {
-        if (cart) $('header #cart').addClass('added')
-        else $('header #cart').removeClass('added')
-    }
-    shoppingCart()
-
-    appendFooter()
+    $('.prod-preview-close, .prod-preview-bg').click(() => {
+        $('.prod-preview').fadeOut()
+    })
+    $(document).keydown((e) => {
+        if (e.which == 27) $('.prod-preview-close').click()	// esc
+        if (e.which == 37 || e.which == 38) $('.prod-img-carousel i.active').prev().click()	// ←
+        if (e.which == 39 || e.which == 40) $('.prod-img-carousel i.active').next().click()	// →
+    })
 </script>

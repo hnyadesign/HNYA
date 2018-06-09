@@ -1,52 +1,35 @@
-<div class="accordion-orig">
-    <img src="img/home/home-1.jpg" a-title="HNYA" a-link="#hnya">
-    <img src="img/home/home-2.jpg" a-title="KAMON" a-link="#kamon">
-    <img src="img/home/home-3.jpg">
-    <img src="img/home/home-4.jpg" a-title="STORE" a-link="#store">
-    <img src="img/home/home-5.jpg" a-title="ABOUT" a-link="#about">
-</div>
-<div class="accordion"></div>
+<div id="accordion"></div>
 
 <script>
-    // Accordion
-    var accordImg = []
-    $('.accordion-orig img').each(function() {
-        accordImg.push([$(this).attr('src'), $(this).attr('a-title'), $(this).attr('a-link')])
-    })
-    for (i in accordImg)
-        $('.accordion').append(`<span
-                src="${accordImg[i][0]}"
-                a-title="${accordImg[i][1]}"
-                a-link="${accordImg[i][2]}"
-            ></span>`)
-        $('.accordion span').each(function() {
-            $(this)
-                .css({
-                    'background-image': `url('${$(this).attr('src')}')`
-                })
-                .append(`
-                    <a href="${$(this).attr('a-link')}" class="a-title">
-                        <i>${$(this).attr('a-title')}</i>
-                    </a>
-                `)
+    aImg = [
+        ["hnya", "img/home/home-1.jpg"],
+        ["kamon", "img/home/home-2.jpg"],
+        ["", "img/home/home-3.jpg"],
+        ["store", "img/home/home-4.jpg"],
+        ["about", "img/home/home-5.jpg"]
+    ]
+    for (i in aImg)
+        $('#accordion').append(
+            `<figure style="background-image: url('${aImg[i][1]}')">
+                <a href="#${aImg[i][0]}" class="box"><span>${aImg[i][0]}</span></a>
+            </figure>`
+        )
+    $('#accordion').height($('main').height())
+    $('#accordion figure').each(function() {
+        $(this).click(() => {
+            $('#accordion figure').removeClass('opened')
+            $(this).addClass('opened')
         })
-        $('.accordion span').eq(2).addClass('opened')
-    $('.accordion span').click(function() {
-        $('.accordion span').removeClass('opened')
-        $(this).addClass('opened')
     })
-    $(document).keydown(function(e) {
-        if (e.which == 37 || e.which == 38) $('.accordion span.opened').prev().click()	// ←
-        if (e.which == 39 || e.which == 40) $('.accordion span.opened').next().click()	// →
+    $('figure', '#accordion').eq(2).click()
+    // Key Inputs
+    $(document).keydown((e) => {
+        if (e.which == 37 || e.which == 38) $('#accordion .opened').prev().click()	// ←
+        if (e.which == 39 || e.which == 40) $('#accordion .opened').next().click()	// →
     })
-
     // Swipe Gesture
-    $('.accordion').on('touchend', () => {
-        if (window.pageYOffset > 30)
-            $('.accordion span.opened').next().click()
-        if (window.pageYOffset < 0)
-            $('.accordion span.opened').prev().click()
+    $('#accordion').on('touchend', () => {
+        if (window.pageYOffset > 30) $('#accordion .opened').next().click()
+        if (window.pageYOffset < 0) $('#accordion .opened').prev().click()
     })
-
-    appendFooter()
 </script>

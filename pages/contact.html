@@ -1,26 +1,56 @@
-<div class="section" id="contact-us">
+<section>
     <h1>Contact Us</h1>
     <div class="sub-section">
         <a href="mailto:hnyadesign@gmail.com">hnyadesign@gmail.com</a>
     </div>
     <div class="sub-section">
-        <a href="https://www.instagram.com/hnya.vip/" target="_blank">Instagram: @HNYA.vip</a>
+        Instagram: <a href="https://www.instagram.com/hnya.vip/">@HNYA.vip</a>
     </div>
-</div>
+</section>
 
-<div class="section" id="subscribe">
+<section>
     <h1>Subscribe</h1>
-    <h2>For the latest news for upcoming drops</h2>
+    <h5>For the latest news for upcoming drops</h5>
     <div class="sub-section">
-        <table><tr>
+        <table class="subscribe"><tr>
             <td><input id="name" type="text" placeholder="Name"></td>
             <td><input id="email" type="email" placeholder="Email"></td>
         </tr><tr>
-            <td colspan="2"><input id="submit" type="submit" value="Submit"></td>
-        </tr></table>
-    </div>
-</div>
+            <td colspan="2"><button id="submit">Submit</button></td>
+        </tr></table></div>
+</section>
 
 <script>
-    appendFooter()
+    $('#submit').click(() => {
+        name = $('#name').val()
+        email = $('#email').val()
+        date = new Date()
+            y = date.getFullYear()
+            m = date.getMonth()+1;      if (m < 10) m = `0${m}`
+            d = date.getDate();         if (d < 10) d = `0${d}`
+            hr = date.getHours();       if (hr < 10) hr = `0${hr}`
+            min = date.getMinutes();    if (min < 10) min = `0${min}`
+            sec = date.getSeconds();    if (sec < 10) sec = `0${sec}`
+            geo = date.toString().match(/\(([A-Za-z\s].*)\)/)[1]
+        entryName = `${y}-${m}-${d}-${validateEntryName(name)}-${validateEntryName(email)}`
+        timestamp = `${y}/${m}/${d} - ${hr}:${min}:${sec} (${geo})`
+        if (name != '' && email != '') {
+            entry = {
+                name: name,
+                email: email,
+                date: timestamp
+            }
+            firebase.database().ref(entryName).set(entry)
+            $('#name, #email').val('')
+        }
+    })
+    function validateEntryName(input) {
+        invalid = [
+            ' ', '.', '#', '$', '[', ']', '/'
+        ]
+        for (i in invalid) {
+            input = input.replace(invalid[i], '')
+        }
+        return input
+    }
 </script>

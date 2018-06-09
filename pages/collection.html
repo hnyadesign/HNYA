@@ -1,24 +1,23 @@
-<div class="dichotomy">
-    <div c-img="collection-1.jpg" class="hoverElem left">
-        <a href="#hnya"><i>HNYA</i></a>
-    </div>
-    <div c-img="collection-2.jpg" class="hoverElem right">
-        <a href="#kamon"><i>KAMON</i></a>
-    </div>
+<div collection="left">
+    <a href="#hnya" class="box">
+        <span>HNYA</span>
+    </a>
 </div>
 
+<div collection="right">
+    <a href="#kamon" class="box">
+        <span>KAMON</span>
+    </a>
+</div>
+
+<div id="bg" class="left"></div>
+
 <script>
-    $('.dichotomy .hoverElem').each(function() {
+    $('[collection]').each(function() {
         $(this).mouseenter(() => {
-            $('.dichotomy .hoverElem').removeClass('hovered')
-            $(this).addClass('hovered')
-            $this = $(this)
-            $('.dichotomy').css({
-                'background-image': `url('img/collection/${$this.attr('c-img')}')`
-            })
+            $('.box').fadeOut()
+            $('.box', this).fadeIn()
+            $('#bg').attr('class', $(this).attr('collection'))
         })
     })
-    $('.dichotomy .left').mouseenter()
-
-    appendFooter()
 </script>

@@ -1,22 +1,25 @@
-<div class="top"><div class="centerThis">
-    <img id="hnya-logo" src="img/collection/hnya-1.jpg">
-    <p>
-        Our HNYA-wear is all about balancing aesthetics with tradition.
-        Just like the famous Japanese demoness bent on jealousy we strive to achieve a look that’ll leave people staring.
-        We want to be bold and different.
-        Unique... Like you.
-        But don’t take our word for it; check out our community.
-    </p>
-    <p>
-        <a href="#store">Visit Store</a>
-    </p>
-</div></div>
+<section class="top">
+    <div class="sub-section">
+        <img src="img/collection/hnya-1.jpg">
+        <p>
+            Our HNYA-wear is all about balancing aesthetics with tradition.
+            Just like the famous Japanese demoness bent on jealousy we strive to achieve a look that’ll leave people staring.
+            We want to be bold and different.
+            Unique... Like you.
+            But don’t take our word for it; check out our community.
+        </p>
+        <h1><a href="#store" hover-underline>Visit Store</a></h1>
+    </div>
+</section>
 
-<div class="bottom"><div class="centerThis">
-    <h1>On the Street</h1>
-    <div class="ig-feed"></div>
-    <a class="seeMore" target="_blank">See more...</a>
-</div></div>
+<section class="bottom">
+    <div class="sub-section">
+        <h1>On the Street</h1>
+        <a class="ig-user-title ig-user"></a>
+        <div class="ig-posts"></div>
+        <a class="ig-more" hover-underline>See more...</a>
+    </div>
+</section>
 
 <script>
     // Instagram API
@@ -31,40 +34,29 @@
         }
     })
     for (i = 0; i < 6; i++)
-        $('.ig-feed').append(`
-            <a
-                class="ig-post"
-                href="${ig.data[i].link}"
-                target="_"
-            >
-                <p class="ig-user">
-                    <span
-                        style="background-image: url('${ig.data[i].user.profile_picture}')"
-                    ></span>
-                    <b>@${ig.data[i].user.username}</b>
-                </p>
-                <span
-                    class="ig-img"
+        $('.ig-posts').append(
+            `<a class="post" href="${ig.data[i].link}" target="_blank">
+                <figure
+                    class="img"
                     style="background-image: url('${ig.data[i].images.standard_resolution.url}')"
-                ></span>
-                <p class="likes">
-                    ${ig.data[i].likes.count}
-                </p>
-            </a>
+                ></figure>
+                <aside class="info">
+                    <p class="ig-user"></p>
+                    <p class="likes">${ig.data[i].likes.count}</p>
+                </aside>
+            </a>`
+        )
+    $('.ig-user')
+        .attr({
+            'href': `https://instagram.com/${ig.data[0].user.username}`,
+            'target': '_blank'
+        })
+        .html(`
+            <img src="${ig.data[0].user.profile_picture}">
+            <span>@${ig.data[0].user.username}</span>
         `)
-    $('.ig-feed').before(`
-        <p class="ig-user-title">
-            <span
-                style="background-image: url('${ig.data[0].user.profile_picture}')"
-            ></span>
-            <b>
-                <a
-                    href="https://instagram.com/${ig.data[0].user.username}"
-                    target="_blank"
-                >@${ig.data[0].user.username}</a>
-            </b>
-        </p>
-    `)
-    $('.seeMore').attr('href', `https://instagram.com/${ig.data[0].user.username}`)
-    appendFooter()
+    $('.ig-more').attr({
+        'href': `https://instagram.com/${ig.data[0].user.username}`,
+        'target': '_blank'
+    })
 </script>

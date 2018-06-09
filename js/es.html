@@ -17,9 +17,10 @@
     }
 </style>
 
-<script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
+
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="main.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+<script src="index.js"></script>
 <script>
     // Initialize Firebase
     var config = {
@@ -37,7 +38,7 @@
         if (e.which == 186) {
             pw = prompt('Enter Password')
 
-            if (pw == hnyapw) {
+            if (pw == hnya) {
                 $('table').html(`
                     <thead>
                         <td>Name</td>

@@ -12,72 +12,72 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Riif A., Ryo F.">
+    <meta name="description" content="HNYA | Our HNYA-wear is all about balancing aesthetics with tradition. Just like the famous Japanese demoness bent on jealousy we strive to achieve a look that’ll leave people staring. We want to be bold and different. Unique... Like you. But don’t take our word for it; check out our community.">
 
     <link rel="stylesheet" href="css/styles.css">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120158760-1"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-      gtag('config', 'UA-120158760-1');
+        gtag('config', 'UA-120158760-1');
     </script>
 </head>
 
 <body>
     <header>
-        <div id="blank1"></div>
-        <div id="blank2"></div>
-        <div id="logo">
-            <a href><h1>HNYA</h1></a>
-        </div>
-        <nav id="desktop">
-            <a href>HOME</a>
-            <a href="#collection">COLLECTION</a>
-            <a href="#store">STORE</a>
-            <a href="#about">ABOUT</a>
+        <aside id="hdr-left">
+            <div id="nav-trigger"><i></i></div>
+        </aside>
+        <a id="hdr-logo" href>HNYA</a>
+        <nav id="hdr-nav">
+            <a href="#home">Home</a>
+            <a href="#collection">Collection</a>
+            <!-- <a href="#hnya">HNYA</a>
+            <a href="#kamon">KAMON</a> -->
+            <a href="#store">Store</a>
+            <a href="#about">About</a>
+            <aside id="hdr-mobile"></aside>
         </nav>
-        <div id="nav-trigger">≡</div>
-        <a id="cart" href="https://www.paypal.com/cgi-bin/webscr?cmd=_cart&business=LYGQBXWREGFAA&display=1">
-            <img src="img/store/cart.png">
-            <span class="itemQty"></span>
-        </a>
+        <aside id="hdr-right"></aside>
     </header>
 
-    <aside id="nav-mobile">
-        <a id="nav-logo" href>
-            <img src="img/logo.png">
-        </a>
-        <nav id="mobile"></nav>
-    </aside>
+    <main></main>
 
-    <!-- Pages (Content) -->
-    <main id="pages">
-        <div id="content"></div>
-        <footer id="desktop">
-            <div id="footer-blank"></div>
-            <div id="footer-links">
-                <div class="left">
-                    <a href="#contact">Contact Us</a>
-                    <span class="divider">|</span>
-                    <a href="#contact">Subscribe</a>
-                    <span class="divider">|</span>
-                    <a href="#legal">Shipping & Return Policy</a>
-                    <span class="divider">|</span>
-                    <a href="#legal">Privacy Policy</a>
-                    <span class="divider">|</span>
-                    <a href="#legal">Terms & Conditions</a>
-                </div>
-                <div class="right social"></div>
-            </div>
-            <a id="footer-right" class="paypal"></a>
-        </footer>
-    </main>
+    <footer>
+        <aside id="ftr-left"></aside>
+        <aside id="ftr-nav">
+            <nav class="links">
+                <a href="#contact">Contact Us</a>
+                <a href="#contact">Subscribe</a>
+                <a href="#legal">Shipping & Return Policy</a>
+                <a href="#legal">Privacy Policy</a>
+                <a href="#legal">Terms & Conditions</a>
+            </nav>
+            <nav class="social">
+                <a href="https://twitter.com/HNYAunofficial" target="_blank" class="hidden">
+                    <img src="img/social/twitter.svg">
+                </a>
+                <a href="https://instagram.com/hnya.vip" target="_blank">
+                    <img src="img/social/instagram.svg">
+                </a>
+                <a href="https://facebook.com/hnya.vip" target="_blank">
+                    <img src="img/social/facebook.svg">
+                </a>
+                <a href="https://twitter.com/HNYAofficial" target="_blank">
+                    <img src="img/social/twitter.svg">
+                </a>
+            </nav>
+        </aside>
+        <aside id="ftr-right"><a target="_blank">&nbsp;</a></aside>
+    </footer>
 
     <!-- Loading -->
-    <aside class="loading">
+    <aside id="loading">
         <figure>
             <span class="hd_1"></span>
             <span class="hd_2"></span><br>
@@ -88,7 +88,20 @@
 
     <!-- .js -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+    <script src="js/index.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCN5wAjDPqLvNBHZ7iUA5FtxNha2MbKnqo",
+            authDomain: "hnya-design.firebaseapp.com",
+            databaseURL: "https://hnya-design.firebaseio.com",
+            projectId: "hnya-design",
+            storageBucket: "hnya-design.appspot.com",
+            messagingSenderId: "574981691123"
+        };
+        firebase.initializeApp(config);
+    </script>
 </body>
 
 </html>
