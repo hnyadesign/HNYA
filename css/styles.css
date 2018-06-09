@@ -149,6 +149,7 @@ header {
     grid-area: hdr-logo;
     position: relative;
     padding: 0 6px;
+    border-radius: 3px;
     color: #000;
     white-space: nowrap;
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
@@ -172,7 +173,8 @@ header {
       header #hdr-logo:hover::before {
         height: 100%; }
     header #hdr-logo:active {
-      background: #bf2a32; }
+      background: #bf2a32;
+      color: #fff !important; }
     header #hdr-logo:hover {
       color: #bf2a32; }
     header #hdr-logo::before {
@@ -184,6 +186,7 @@ header {
     header #hdr-nav a {
       position: relative;
       padding: 0 6px;
+      border-radius: 3px;
       color: #000;
       white-space: nowrap;
       transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
@@ -206,7 +209,8 @@ header {
         header #hdr-nav a:hover::before {
           height: 100%; }
       header #hdr-nav a:active {
-        background: #bf2a32; }
+        background: #bf2a32;
+        color: #fff !important; }
   header #hdr-right {
     display: none;
     grid-area: hdr-right; }
@@ -250,6 +254,7 @@ footer {
 footer a, #hdr-mobile a {
   position: relative;
   padding: 0 6px;
+  border-radius: 3px;
   color: #000;
   white-space: nowrap;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
@@ -271,7 +276,8 @@ footer a, #hdr-mobile a {
     footer a:hover::before, #hdr-mobile a:hover::before {
       height: 100%; }
   footer a:active, #hdr-mobile a:active {
-    background: #bf2a32; }
+    background: #bf2a32;
+    color: #fff !important; }
 footer .links, #hdr-mobile .links {
   float: left;
   width: 60%;
@@ -534,6 +540,7 @@ main#hnya section {
         z-index: 0;
         position: relative;
         padding: 0 6px;
+        border-radius: 3px;
         color: #000;
         white-space: nowrap;
         transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; }
@@ -554,7 +561,8 @@ main#hnya section {
           main#hnya section.bottom .ig-user.ig-user-title span:hover::before {
             height: 100%; }
         main#hnya section.bottom .ig-user.ig-user-title span:active {
-          background: #bf2a32; }
+          background: #bf2a32;
+          color: #fff !important; }
     main#hnya section.bottom .ig-posts .post {
       float: center;
       display: inline-block;
@@ -1019,7 +1027,7 @@ main#store .prod-preview {
 
   footer .social a::before {
     content: "" !important;
-    background: linear-gradient(#ec4316, #bf2a32); } }
+    background: #bf2a32; } }
 @supports (-webkit-backdrop-filter: blur(10px) saturate(1.8)) {
   header, main::after, .prod-preview {
     background: rgba(255, 255, 255, 0.9) !important;

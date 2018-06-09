@@ -15,7 +15,7 @@
 <script>
     $('[collection]').each(function() {
         $(this).mouseenter(() => {
-            $('.box').fadeOut()
+            $('.box').hide()
             $('.box', this).fadeIn()
             $('#bg').attr('class', $(this).attr('collection'))
         })
