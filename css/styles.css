@@ -620,30 +620,7 @@ main#kamon .half-section {
   main#kamon .half-section ol {
     list-style-position: inside; }
   main#kamon .half-section a {
-    position: relative;
-    padding: 0 6px;
-    color: #000;
-    white-space: nowrap;
-    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
     color: #bf2a32; }
-    main#kamon .half-section a::before {
-      pointer-events: none;
-      content: none;
-      position: absolute;
-      left: 0;
-      top: 0;
-      z-index: -1;
-      width: 100%;
-      height: 0;
-      background: #bf2a32;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      transition: height 0.2s ease-in-out; }
-    main#kamon .half-section a:hover {
-      color: #bf2a32; }
-      main#kamon .half-section a:hover::before {
-        height: 100%; }
-    main#kamon .half-section a:active {
-      background: #bf2a32; }
 main#store .store {
   margin: 0 auto;
   width: 900px;
