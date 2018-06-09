@@ -957,6 +957,8 @@ main#store .prod-preview {
   main#collection [collection] {
     width: 100vw;
     height: calc((100vh - 80px) / 2); }
+    main#collection [collection] .box {
+      opacity: 1; }
   main#collection #bg.left {
     background-image: url("../img/collection/collection-1-mobile.jpg"); }
   main#collection #bg.right {
