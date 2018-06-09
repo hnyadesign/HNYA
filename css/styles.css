@@ -174,7 +174,7 @@ header {
     header #hdr-logo:active {
       background: #bf2a32; }
     header #hdr-logo:hover {
-      color: #fff !important; }
+      color: #bf2a32; }
     header #hdr-logo::before {
       background: #000; }
   header #hdr-nav {
@@ -1000,6 +1000,7 @@ main#store .prod-preview {
   [hover-underline]::before, [hover-underline]::after {
     content: "" !important; }
 
+  #hdr-logo::before,
   #hdr-nav a::before,
   footer .links a::before, #hdr-mobile a::before,
   section .sub-section a::before,
@@ -1007,6 +1008,7 @@ main#store .prod-preview {
   .ig-more::before,
   .half-section a::before {
     content: none; }
+  #hdr-logo:hover,
   #hdr-nav a:hover,
   footer .links a:hover, #hdr-mobile a:hover,
   section .sub-section a:hover,
@@ -1015,13 +1017,9 @@ main#store .prod-preview {
   .half-section a:hover {
     color: #bf2a32 !important; }
 
-  #hdr-logo::before,
   footer .social a::before {
     content: "" !important;
-    background: linear-gradient(#ec4316, #bf2a32); }
-
-  #hdr-logo::before {
-    background: #000; } }
+    background: linear-gradient(#ec4316, #bf2a32); } }
 @supports (-webkit-backdrop-filter: blur(10px) saturate(1.8)) {
   header, main::after, .prod-preview {
     background: rgba(255, 255, 255, 0.9) !important;
