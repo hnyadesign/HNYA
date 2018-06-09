@@ -458,7 +458,7 @@ main#collection {
     width: 50vw;
     height: calc(100vh - 80px - 40px); }
     main#collection [collection] .box {
-      display: none;
+      opacity: 0;
       position: absolute;
       left: 50%;
       top: 50%;
@@ -471,7 +471,8 @@ main#collection {
       background: rgba(0, 0, 0, 0.2);
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
       transition: box-shadow 0.2s ease-in-out;
-      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, opacity 0.2s ease-in-out; }
       main#collection [collection] .box:hover {
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); }
       main#collection [collection] .box:hover {
@@ -485,6 +486,8 @@ main#collection {
         font-size: 26px;
         text-transform: uppercase;
         letter-spacing: 2px; }
+      main#collection [collection] .box.appear {
+        opacity: 1; }
   main#collection #bg {
     position: absolute;
     left: 0;
