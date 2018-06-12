@@ -811,6 +811,9 @@ main#store .prod-preview {
       main#store .prod-preview aside .prod-info p {
         margin: 0 0 1em 0;
         text-align: left; }
+      main#store .prod-preview aside .prod-info .sizeChart a,
+      main#store .prod-preview aside .prod-info .sizeAsterisk {
+        color: gray !important; }
       main#store .prod-preview aside .prod-info .purchase {
         text-align: center; }
         main#store .prod-preview aside .prod-info .purchase > * {
@@ -841,8 +844,6 @@ main#store .prod-preview {
             transform: translate(0, -50%);
             color: rgba(255, 255, 255, 0.5);
             font-size: 10px; }
-        main#store .prod-preview aside .prod-info .purchase .sizeChart {
-          margin: 4px 4px 4px 0; }
         main#store .prod-preview aside .prod-info .purchase .buy {
           padding: 2px 6px;
           border: none;

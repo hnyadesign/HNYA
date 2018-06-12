@@ -83,6 +83,10 @@
             $('.prod-info').html(`
                 <p class="prod-description">${product.description}</p>
                 <p class="prod-material">${product.material}</p>
+                <p class="sizeChart"><a
+                    target="_blank"
+                    href="img/store/size-chart.png"
+                >* Size Chart</a></p>
                 <hr>
                 <p class="purchase">
                     <b>
@@ -91,12 +95,7 @@
                     </b><b>
                         <select id="size"></select>
                         <span class="select_arrows">▼</span>
-                    </b>
-                    <a
-                        class="sizeChart"
-                        target="_blank"
-                        href="img/store/size-chart.png"
-                    >*</a>
+                    </b><span class="sizeAsterisk">*</span>
                     <a
                         class="buy"
                         target="_blank"
